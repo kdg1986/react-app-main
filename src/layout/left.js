@@ -1,7 +1,8 @@
 import { Layout, Menu } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const menu = [
   //{ code : "ERP",   title : "영업관리",     depth : 0, no : 0  },
@@ -11,25 +12,28 @@ const menu = [
   //{ code : "AGC",   title : "대리점 웹 ERP",depth : 0, no : 4    },
   //{ code : "LAN",   title : "랜드 웹 ERP",  depth : 0, no : 5    },
   //{ code : "WEB",   title : "홈페이지관리", depth : 0, no : 6     },
-  { code : "RMS_1", title : "시스템관리_1", depth : 1, no : 0,pcode : "RMS"   },
-  { code : "RMS_2", title : "시스템관리_2", depth : 1, no : 1,pcode : "RMS"   },
-  { code : "RMS_1_1", title : "시스템관리_2", depth : 2, no : 1,pcode : "RMS_1"   },
-  { code : "RMS_1_2", title : "시스템관리_3", depth : 2, no : 1,pcode : "RMS_1"   },
-  { code : "SAMPLE",   title : "예제", depth : 0, no : 6, path : "/sample"     },
+  { code : "RMS_COMMON", title : "공통코드", depth : 1, no : 0,pcode : "RMS"   },
+  { code : "RMS_COMMON_SYS", title : "프로그램관리", depth : 1, no : 0,pcode : "RMS_COMMON",path : "/common/program" },
 ]
 
 export default () => {
   const { SubMenu } = Menu;
   const { Sider } = Layout;
   const history = useHistory();
-  const handleClick = useCallback(data => history.push(data?.path || "/"),[history]) ;
-  const MenuItem = data => {    
+  const [ MenuList,setMenuList ] = useState([]);
+  const dispatch = useDispatch();
+  const handleClick = useCallback(data => {
+    const breadcrumb = data.namePath ? `${data.namePath},${data.title}` : `${data.title}`
+    dispatch({ type : 'layout/breadcrumb', payload : breadcrumb });
+    history.push(data?.path || "/");
+  },[history]) ;
+  const createMenu = data => {           
     return data.reduce(( acc,cur,idx,arr )=>{
-      const subData = menu.filter( item =>  (item?.pcode && item.pcode === cur.code) );
+      const subData = menu.filter( item => item?.pcode && item.pcode === cur.code);
       if( subData.length > 0 ){
         acc = acc.concat(
           <SubMenu key={cur.code} icon={<UserOutlined />} title={cur.title}>
-              {MenuItem(subData)}
+              {createMenu( subData.map(item=> { item.namePath = `${(item.namePath || item.title)},${cur.title}`; return item } ) )}
           </SubMenu>
         );
       }else{
@@ -39,23 +43,19 @@ export default () => {
     },[])
   }
 
+  useEffect(()=>{
+    const _menu = DEVELOP_MODE ? menu.filter(item=>item.depth===0).concat([{ code : "SAMPLE",   title : "예제", depth : 0, no : 6, path : "/sample" }])
+                               : menu.filter(item=>item.depth===0);
+    setMenuList( createMenu( _menu ) );
+  },[])
+
   return(
     <Sider width={200} className="site-layout-background">
         <Menu
-          mode="inline"
-          //defaultSelectedKeys={['1']}
-          //defaultOpenKeys={['sub_sub1']}
+          mode="inline"                    
           style={{ height: '100%', borderRight: 0 }}
         >
-          {/*<SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-            <SubMenu key="sub_sub1" icon={<UserOutlined />} title="subnav 1">
-              <Menu.Item key="1">option2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
-            <Menu.Item key="4">option4</Menu.Item>
-          </SubMenu>*/}
-          {MenuItem(menu.filter(item=>item.depth===0))}
+          {MenuList}
         </Menu>
     </Sider>
   )

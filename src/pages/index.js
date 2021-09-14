@@ -1,15 +1,13 @@
 import { Route, Switch } from 'react-router';
 import withComponentSplitting from '@/components/withComponentSplitting';
 
-//const Inbox = withComponentSplitting( () => import('@/pages/inbox') );
-const Inbox2 = withComponentSplitting( () => import('@/pages/inbox2') );
+const System = withComponentSplitting( () => import('@/pages/system') );
 
 export default () => {    
     return(
         <>  
-            <Switch>
-                <Route path="/inbox" component={()=><h3>Inbox Potal</h3>}/>
-                <Route path="/inbox2/:param" component={Inbox2}/>
+            <Switch>                
+                <Route path="/common/:param" component={System}/>                
                 <Route path="/" component={()=><h3>potalMain</h3>}/>
             </Switch>
         </>

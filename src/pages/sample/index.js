@@ -4,6 +4,8 @@ import { Typography } from 'antd';
 
 import Button from '@/pages/sample/button';
 
+import Content from '@/layout/Content';
+
 export default ({location, match}) => {
     const { Title } = Typography;
     const Index = () => {
@@ -33,9 +35,9 @@ export default ({location, match}) => {
 
     return (
         <>
-            <Route exact path="/sample" component={Index}/>
+            <Route exact path="/sample" component={() => <Content><Index/></Content>}/>
             <Switch>
-                <Route path="/sample/button" component={Button}/>
+                <Route path="/sample/button" component={()=><Content><Button/></Content>}/>
             </Switch>
         </>
     )

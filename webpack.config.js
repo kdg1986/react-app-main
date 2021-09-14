@@ -6,6 +6,7 @@ const webpack = require('webpack');
 
 module.exports = (env, options) => {    
   options = options || {};
+  options.mode = options.mode || "development";  
   return {
     entry: "./src/index.js",
     output: {
@@ -17,7 +18,7 @@ module.exports = (env, options) => {
       clean: true,
       pathinfo: false,
     },
-    mode: options.mode || 'development', //[ production, development, none ]    
+    mode: options.mode, //[ production, development, none ]    
     module: { //loaders
       rules: [
         ...require("./webpack.loaders").concat([
@@ -43,9 +44,11 @@ module.exports = (env, options) => {
       new MiniCssExtractPlugin({
           filename: './css/[name]_[id].css',
           chunkFilename: "css/[name]_[id].css"
-      }),
+      }),      
       new webpack.DefinePlugin({
-        ELASTIC_URL: JSON.stringify("http://kdg1986.synology.me:9200"),        
+        ELASTIC_URL: JSON.stringify("http://kdg1986.synology.me:9200"),
+        DEVELOP_MODE: options.mode === "development",
+        'process.env': JSON.stringify(process.env),
       }),
     ],
     resolve: {
@@ -55,7 +58,14 @@ module.exports = (env, options) => {
         '@COMMON': path.resolve(__dirname, 'src/components/common'),
         '@STYLE': path.resolve(__dirname, 'src/css'),
         '@ELECTRON': path.resolve(__dirname, 'electron/'),    
-      },      
+      },
+      fallback: {
+        //"path": require.resolve("path-browserify"),
+        //"os": require.resolve("os-browserify/browser"),
+        //"http": require.resolve("stream-http"),
+        //"https": require.resolve("https-browserify"),
+        //"assert": require.resolve("assert/"),
+      }       
     },    
     devServer: {
       contentBase: path.resolve(__dirname + "/build"),

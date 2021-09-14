@@ -1,10 +1,11 @@
 const webpackConfig = require("./webpack.config");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = () => {  
+module.exports = (env, options) => {  
+  options.devMode = false;
+  options.mode = "production";
   return {
-    ...webpackConfig(),
-    mode: 'production', //[ production, development, none ]
+    ...webpackConfig(env, options),    
     optimization: {
       runtimeChunk: 'single',
       splitChunks: {
