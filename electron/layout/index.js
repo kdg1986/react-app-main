@@ -6,8 +6,8 @@ import json from '@ELECTRON/layout/menu';
 import PageRoute from '@/pages';
 import Loading from '@/components/atoms/loading';
 
-import Header from '@/layout/header';
-import Left from '@/layout/left';
+import Header from '@/layout/Header';
+import Left from '@/layout/Left';
 
 
 const drawerWidth = 240;

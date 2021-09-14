@@ -1,71 +1,62 @@
-import clsx from 'clsx';
-import { Drawer,List,Divider,IconButton,ListItemIcon,ListItemText,Collapse,ListItem } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import {ExpandLess,ExpandMore} from '@material-ui/icons';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Layout, Menu } from 'antd';
+import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
+import { useCallback } from 'react';
 
-const Left = ({props}) => {
-    const theme = useTheme();    
-    const {classes,json} = props;
-    const store = useSelector(state => state.layoutReducer);
-    const dispatch = useDispatch();
+const menu = [
+  //{ code : "ERP",   title : "영업관리",     depth : 0, no : 0  },
+  //{ code : "ITR",   title : "인트라넷관리", depth : 0, no : 1    },
+  //{ code : "PAS",   title : "인사관리",     depth : 0, no : 2    },
+  { code : "RMS",   title : "시스템관리",   depth : 0, no : 3    },
+  //{ code : "AGC",   title : "대리점 웹 ERP",depth : 0, no : 4    },
+  //{ code : "LAN",   title : "랜드 웹 ERP",  depth : 0, no : 5    },
+  //{ code : "WEB",   title : "홈페이지관리", depth : 0, no : 6     },
+  { code : "RMS_1", title : "시스템관리_1", depth : 1, no : 0,pcode : "RMS"   },
+  { code : "RMS_2", title : "시스템관리_2", depth : 1, no : 1,pcode : "RMS"   },
+  { code : "RMS_1_1", title : "시스템관리_2", depth : 2, no : 1,pcode : "RMS_1"   },
+  { code : "RMS_1_2", title : "시스템관리_3", depth : 2, no : 1,pcode : "RMS_1"   },
+  { code : "SAMPLE",   title : "예제", depth : 0, no : 6, path : "/sample"     },
+]
 
-    const showMenu = () => dispatch({ type: 'layout/showMenu' });
-    const setTitle = (name) => dispatch({ type : "layout/setTitle" , payload : name });
-    const menuExpand = (path,isExpand) => dispatch({ type: 'layout/menuExpend', payload : { menu : `Expand_${path}`, state : isExpand } })    
-    const Item = ({props}) => {                
-        const { name , path , icon } = props;
-        return (
-            <>
-                <ListItem button>
-                    <ListItemIcon>{icon}</ListItemIcon>
-                    <Link to={path} onClick={() => setTitle(name)}><ListItemText primary={name}  /></Link>
-                    {props.subPage && (store?.[`Expand_${path}`] ? <ExpandLess onClick={() => menuExpand(path,false)} /> : <ExpandMore onClick={() => menuExpand(path,true)} />)}
-                </ListItem>
-                {(props.subPage || []).map(
-                    (obj,idx) => <Collapse in={store?.[`Expand_${path}`]}  timeout="auto" unmountOnExit key={idx}>
-                                    <List component="div" disablePadding>
-                                        <ListItem button className={classes.nested} >
-                                        <ListItemIcon>{obj.icon}</ListItemIcon>
-                                        <Link to={obj.path} onClick={() => setTitle(obj.name)}><ListItemText primary={obj.name} /></Link>
-                                        </ListItem>
-                                    </List>
-                                </Collapse>
-                )}
-            </>
-        )
-    }
+export default () => {
+  const { SubMenu } = Menu;
+  const { Sider } = Layout;
+  const history = useHistory();
+  const handleClick = useCallback(data => history.push(data?.path || "/"),[history]) ;
+  const MenuItem = data => {    
+    return data.reduce(( acc,cur,idx,arr )=>{
+      const subData = menu.filter( item =>  (item?.pcode && item.pcode === cur.code) );
+      if( subData.length > 0 ){
+        acc = acc.concat(
+          <SubMenu key={cur.code} icon={<UserOutlined />} title={cur.title}>
+              {MenuItem(subData)}
+          </SubMenu>
+        );
+      }else{
+        acc = acc.concat(<Menu.Item key={`${cur.code}_${cur.no}`} onClick={()=>handleClick(cur)}>{cur.title}</Menu.Item>);
+      }
+      return acc;
+    },[])
+  }
 
-    return(
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: store.showMenu,
-          [classes.drawerClose]: !store.showMenu,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: store.showMenu,
-            [classes.drawerClose]: !store.showMenu,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={showMenu}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-           {json.map((obj,index) =>(<Item props={obj} key={index}/>)) }          
-        </List>
-        {/*<Divider /> */}
-      </Drawer>
-    )
-    
+  return(
+    <Sider width={200} className="site-layout-background">
+        <Menu
+          mode="inline"
+          //defaultSelectedKeys={['1']}
+          //defaultOpenKeys={['sub_sub1']}
+          style={{ height: '100%', borderRight: 0 }}
+        >
+          {/*<SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
+            <SubMenu key="sub_sub1" icon={<UserOutlined />} title="subnav 1">
+              <Menu.Item key="1">option2</Menu.Item>
+            </SubMenu>
+            <Menu.Item key="2">option2</Menu.Item>
+            <Menu.Item key="3">option3</Menu.Item>
+            <Menu.Item key="4">option4</Menu.Item>
+          </SubMenu>*/}
+          {MenuItem(menu.filter(item=>item.depth===0))}
+        </Menu>
+    </Sider>
+  )
 }
-
-export default Left;

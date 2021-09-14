@@ -1,38 +1,16 @@
-import clsx from 'clsx';
-import { AppBar,IconButton,Toolbar,Typography} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import { useDispatch, useSelector } from 'react-redux';
+import { Layout } from 'antd';
 
-const Header = ({props}) => {    
-    const { classes } = props;    
-    const store = useSelector(state => state.layoutReducer );
-    const dispatch = useDispatch();
+export default () => {
+    const { Header } = Layout;
+
     return(
-        <AppBar
-            position="fixed"
-            className={clsx(classes.appBar, {
-            [classes.appBarShift]: store.showMenu,
-            })}
-        >
-            <Toolbar>
-                <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    onClick={ () => dispatch({ type: 'layout/showMenu' }) }
-                    edge="start"
-                    className={clsx(classes.menuButton, {
-                    [classes.hide]: store.showMenu,
-                    })}
-                >
-                    <MenuIcon />
-                </IconButton>
-                <Typography variant="h6" noWrap>
-                    {store.title}
-                </Typography>
-                
-            </Toolbar>
-        </AppBar>
-    )
+        <Header className="header">
+            <div className="logo" />
+            {/*<Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+                <Menu.Item key="1">nav 1</Menu.Item>
+                <Menu.Item key="2">nav 2</Menu.Item>
+                <Menu.Item key="3">nav 3</Menu.Item>
+            </Menu>*/}
+        </Header>
+    )    
 }
-
-export default Header;
