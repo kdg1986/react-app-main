@@ -1,7 +1,8 @@
 ## React-App-Main
 * React 17.0.2
 * webpack 5.48.0
-* UI Ant Design
+* Ant Design 4.16.13
+* electron 13.2.1
 
 ## Installation
 
