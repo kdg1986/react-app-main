@@ -8,7 +8,7 @@ module.exports = (env, options) => {
   options = options || {};
   options.mode = options.mode || "development";  
   return {
-    entry: "./src/index.js",
+    entry: './src/index.js',
     output: {
       filename: "static/[name].[hash].js",
       chunkFilename: 'static/[name].[chunkhash].chunk.js',
