@@ -72,6 +72,7 @@ module.exports = (env, options) => {
       index: "index.html",
       port: 3000,
       historyApiFallback: true,
+      hot:true
     },
   }  
 };

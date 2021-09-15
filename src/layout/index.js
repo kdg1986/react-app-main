@@ -6,20 +6,21 @@ import { Route, Switch } from 'react-router';
 import Pages from '@/pages';
 import withComponentSplitting from '@/components/withComponentSplitting';
 import 'antd/dist/antd.css';
+import { hot } from 'react-hot-loader/root';
 
-export default () => {  
-  return (    
+const App = () => (
+  <Layout>
+    <Header/>
     <Layout>
-          <Header/>
-          <Layout>
-              <Left/>                            
-              <Route exact path="/" component={Pages}/>
-              <Switch>        
-                {DEVELOP_MODE && <Route path="/sample/:name" component={withComponentSplitting( () => import('@/pages/sample') )}/>}
-                {DEVELOP_MODE && <Route path="/sample" component={withComponentSplitting( () => import('@/pages/sample') )}/>}
-                <Route path="/:name" component={Pages}/>
-              </Switch>
-          </Layout>
-      </Layout>
-  );
-}
+        <Left/>                            
+        <Route exact path="/" component={Pages}/>
+        <Switch>        
+          {DEVELOP_MODE && <Route path="/sample/:name" component={withComponentSplitting( () => import('@/pages/sample') )}/>}
+          {DEVELOP_MODE && <Route path="/sample" component={withComponentSplitting( () => import('@/pages/sample') )}/>}
+          <Route path="/:name" component={Pages}/>
+        </Switch>
+    </Layout>
+  </Layout>
+)
+
+export default hot(App);

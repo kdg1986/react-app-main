@@ -76,15 +76,12 @@ export default () => {
         setSelect1({ data : _selData, selValue : "" });
         setSelect2({ data : _selData, selValue : "" });
     },[]);
-
-    const selChk = (value,func) => {
-        
-        setSelect1({ ...select1,selValue : value  });
-        func( !(value.length) );
-    }        
-
     
     const onChange = e => setValue(e.target.value);
+
+    const rowSelection = (val) => {
+        console.log(val)
+    }
 
     return(
         <>
@@ -93,21 +90,31 @@ export default () => {
                     <Row>
                         <Col span={2}>시스템명</Col>
                         <Col span={6}>                    
-                            <ComboBox 
-                                key="1" 
-                                defaultValue="" 
-                                style={{ width: 250 }} 
-                                datasource={select1.data} 
-                                onChange={(value)=> {
-                                    setSelect1({ ...select1,selValue : value  });
-                                    setDisabled1( !(value.length) );                                    
-                                }} 
+                            <ComboBox                                 
+                            defaultValue="" 
+                            style={{ width: 250 }} 
+                            datasource={select1.data} 
+                            onChange={(value)=> setSelect1({ ...select1,selValue : value  })} 
                             />
                         </Col>
                         <Col span={2}>업무구분</Col>
                         <Col span={6}>
-                            <ComboBox key="2" defaultValue="" style={{ width: 100 }} datasource={select1.data} disabled={disabled1} onChange={(value)=> selChk(value,setDisabled2)} />
-                            <ComboBox key="3" defaultValue="" style={{ width: 100 }} datasource={select1.data} disabled={disabled2} />
+                            <ComboBox                                 
+                            defaultValue="" 
+                            style={{ width: 100 }} 
+                            datasource={select1.data} 
+                            disabled={disabled2}
+                            onChange={(value)=> {
+                                setSelect2({ ...select2,selValue : value  });
+                                setDisabled2( !(value.length) );                                    
+                            }} 
+                            />
+                            <ComboBox 
+                            defaultValue="" 
+                            style={{ width: 100 }} 
+                            datasource={select1.data} 
+                            disabled={disabled2} 
+                            />
                             <Input style={{ width: 150 }} defaultValue="" />
                         </Col>
                     </Row>
@@ -139,7 +146,7 @@ export default () => {
                     </Col>
                     <Col span={12}>
                         <Row justify="end">                            
-                            <div style={{padding: '0 3px' }}> <Button icon={<SearchOutlined />} onClick={()=>console.log(select1)}>신규</Button> </div>
+                            <div style={{padding: '0 3px' }}> <Button icon={<SearchOutlined />}>신규</Button> </div>
                             <div style={{padding: '0 3px' }}> <Button icon={<SearchOutlined />}>삭제</Button> </div>
                             <div style={{padding: '0 3px' }}> <Button icon={<SearchOutlined />}>취소</Button> </div>
                             <div style={{padding: '0 3px' }}> <Button icon={<SearchOutlined />}>저장</Button> </div>
@@ -148,13 +155,25 @@ export default () => {
                     </Col>
                 </Row>
                 <Card>
-                    <Table 
-                        columns={[
-                            { title: 'Name', dataIndex: 'name', },
-                            { title: 'Age', dataIndex: 'age', },
-                            { title: 'Address', dataIndex: 'address', },
-                        ]}
-                        dataSource={data} 
+                    <Table                     
+                    onRow={(record, rowIndex) => {
+                        return {
+                          onClick: event => console.log( record,rowIndex ), // click row
+                          //onDoubleClick: event => {}, // double click row
+                          //onContextMenu: event => {}, // right button click row
+                          //onMouseEnter: event => {}, // mouse enter row
+                          //onMouseLeave: event => {}, // mouse leave row
+                        };
+                    }}
+                    rowSelection={{
+                        onChange : (val) => console.log(val)                        
+                    }}
+                    columns={[
+                        { title: 'Name', dataIndex: 'name', },
+                        { title: 'Age', dataIndex: 'age', },
+                        { title: 'Address', dataIndex: 'address', },
+                    ]}
+                    dataSource={data} 
                     />
                 </Card>
             </div>
