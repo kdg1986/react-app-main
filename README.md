@@ -1,6 +1,7 @@
 ## React-App-Main
-
-- Ant Design
+- React 17.0.2
+- webpack 5.48.0
+* UI Ant Design
 
 ## Installation
 
