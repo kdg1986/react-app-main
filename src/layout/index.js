@@ -9,6 +9,7 @@ import 'antd/dist/antd.css';
 import { hot } from 'react-hot-loader/root';
 
 const App = () => (
+  <>
   <Layout>
     <Header/>
     <Layout>
@@ -18,9 +19,10 @@ const App = () => (
           {DEVELOP_MODE && <Route path="/sample/:name" component={withComponentSplitting( () => import('@/pages/sample') )}/>}
           {DEVELOP_MODE && <Route path="/sample" component={withComponentSplitting( () => import('@/pages/sample') )}/>}
           <Route path="/:name" component={Pages}/>
-        </Switch>
+        </Switch>        
     </Layout>
-  </Layout>
+  </Layout>  
+  </>
 )
 
 export default hot(App);
