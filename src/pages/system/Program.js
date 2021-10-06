@@ -228,9 +228,7 @@ export default () => {
         const _data = [ ...data ];
         
         _data[detail.key] = {
-            C,
-            E,
-            I,   
+            C,E,I,   
             key,
             programFileName,
             programGbn,
@@ -259,8 +257,7 @@ export default () => {
         })
     }
 
-    useEffect(()=>{        
-        console.log(1)
+    useEffect(()=>{                
         getSystemList().then((res)=>{
             setDetail({ 
                 ...detail
@@ -291,7 +288,7 @@ export default () => {
                         </Row>
                     </Col>
                     <Col span={12}>
-                        <Row justify="end">                            
+                        <Row justify="end">
                             <div style={{padding: '0 3px' }}> <Button icon={<SearchOutlined />}>신규</Button> </div>
                             <div style={{padding: '0 3px' }}> <Button icon={<SearchOutlined />}>삭제</Button> </div>
                             <div style={{padding: '0 3px' }}> <Button icon={<SearchOutlined />}>취소</Button> </div>                            
