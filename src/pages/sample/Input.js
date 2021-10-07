@@ -1,6 +1,6 @@
-import { Button,Input,Row, Col, Divider, PageHeader, Typography  } from 'antd';
+import { Select,Button,Input,Row, Col, Divider, PageHeader, Typography  } from 'antd';
 import { SearchOutlined,DownloadOutlined } from '@ant-design/icons';
-import { v4 as uuidv4 } from 'uuid';
+import {keygen} from '@/util';
 
 const Typo = props => <Typography.Text 
                       code={props.codeStyle === false ? false : true} strong="true" 
@@ -33,7 +33,7 @@ export default () => {
             <PageHeader
                 className="site-page-header"
                 onBack={() => history.back()}
-                title={["Input",<Button key={uuidv4()} type="link" href="https://ant.design/components/input/#Input" target="_blank">API</Button>]}
+                title={["Input",<Button key={keygen()} type="link" href="https://ant.design/components/input/#Input" target="_blank">API</Button>]}
             />
             
             <Typo>{"import { Input } from 'antd';"}</Typo><br/>
@@ -88,7 +88,7 @@ export default () => {
             demo={<>
                 <Input defaultValue="test" />
             </>}            
-            description="String, &nbsp; 기본값 : -"
+            description="string, &nbsp; 기본값 : -"
             code={<>
                 <Typo>{'<Input defaultValue="test" />'}</Typo>
             </>} />
@@ -174,11 +174,151 @@ export default () => {
                 <Typo>{'<Input onPressEnter={()=>alert("onPressEnter")} />'}</Typo>
             </>} />
             
+            <Divider/>
+            <PageHeader
+                className="site-page-header"
+                onBack={() => history.back()}
+                title={["TextArea",<Button key={keygen()} type="link" href="https://ant.design/components/input/#Input.TextArea" target="_blank">API</Button>]}
+            />
 
+            <Typo>{"<Input.TextArea/>"}</Typo><br/>
 
+            <Addrow
+            title="allowClear"
+            divider={true}
+            demo={<>
+                <Input.TextArea allowClear={true} />
+            </>}            
+            description="boolean, &nbsp; 기본값 : false"
+            code={<>
+                <Typo>{'<Input.TextArea allowClear={true} />'}</Typo>
+            </>} />
 
-            
-            
+            <Addrow
+            title="autoSize"
+            divider={true}
+            demo={<>
+                <Input.TextArea autoSize={true} /><p/>
+                <Input.TextArea autoSize={{ minRows: 2, maxRows: 6 }} />
+            </>}            
+            description="true | false or { minRows: 2, maxRows: 6 }, &nbsp; 기본값 : false"
+            code={<>
+                <Typo>{'<Input.TextArea autoSize={true} />'}</Typo><p/>
+                <Typo>{'<Input.TextArea autoSize={{ minRows: 2, maxRows: 6 }} />'}</Typo>                
+            </>} />
+
+            <Addrow
+            title="bordered"
+            divider={true}
+            demo={<>
+                <Input.TextArea bordered={false} />
+            </>}            
+            description="boolean, &nbsp; 기본값 : true"
+            code={<>
+                <Typo>{'<Input.TextArea bordered={false} />'}</Typo>
+            </>} />
+
+            <Addrow
+            title="defaultValue"
+            divider={true}
+            demo={<>
+                <Input.TextArea defaultValue="test" />
+            </>}            
+            description="string, &nbsp; 기본값 : -"
+            code={<>
+                <Typo>{'<Input.TextArea defaultValue="test" />'}</Typo>
+            </>} />
+
+            <Addrow
+            title="maxLength"
+            divider={true}
+            demo={<>
+                <Input.TextArea maxLength={10} />
+            </>}            
+            description="number, &nbsp; 기본값 : -"
+            code={<>
+                <Typo>{'<Input.TextArea maxLength={10} />'}</Typo>
+            </>} />
+
+            <Addrow
+            title="showCount"
+            divider={true}
+            demo={<>
+                <Input.TextArea showCount={true} /><p/>
+                <Input.TextArea showCount={{ formatter : (count)=> console.log(count) }} />
+            </>}            
+            description="boolean | object, &nbsp; 기본값 : false"
+            code={<>
+                <Typo>{'<Input.TextArea showCount={true} />'}</Typo><p/>
+                <Typo>{'<Input.TextArea showCount={{ formatter : (count)=> console.log(count) }} />'}</Typo>
+            </>} />
+
+            <Addrow
+            title="onPressEnter"
+            divider={true}
+            demo={<>
+                <Input.TextArea onPressEnter={(obj)=> console.log(obj)} />
+            </>}            
+            description="function, &nbsp; 기본값 : -"
+            code={<>
+                <Typo>{'<Input.TextArea onPressEnter={(obj)=> console.log(obj)} />'}</Typo>
+                
+            </>} />
+
+            <Addrow
+            title="onResize"
+            divider={true}
+            demo={<>
+                <Input.TextArea onResize={(obj)=> console.log(obj)} />
+            </>}            
+            description="function, &nbsp; 기본값 : -"
+            code={<>
+                <Typo>{'<Input.TextArea onResize={(obj)=> console.log(obj)} />'}</Typo>                
+            </>} />
+
+            <Divider/>
+            <PageHeader
+                className="site-page-header"
+                onBack={() => history.back()}
+                title={["Search",<Button key={keygen()} type="link" href="https://ant.design/components/input/#Input.Search" target="_blank">API</Button>]}
+            />
+
+            <Typo>{"<Input.Search/>"}</Typo><br/>
+
+            <Addrow
+            title="enterButton"
+            divider={true}
+            demo={<>
+                <Input.Search enterButton={true}/><p/>
+                <Input.Search enterButton={<h1>Search</h1>}/>
+            </>}            
+            description="boolean | ReactNode, &nbsp; 기본값 : false"
+            code={<>
+                <Typo>{'<Input.Search enterButton={true}/>'}</Typo><p/>
+                <Typo>{'<Input.Search enterButton={<h1>Search</h1>}/>'}</Typo>                
+            </>} />
+
+            <Addrow
+            title="loading"
+            divider={true}
+            demo={<>
+                <Input.Search loading={true}/>                
+            </>}            
+            description="boolean, &nbsp; 기본값 : false"
+            code={<>
+                <Typo>{'<Input.Search loading={true}/>'}</Typo>                
+            </>} />
+
+            <Addrow
+            title="onSearch"
+            divider={true}
+            demo={<>
+                <Input.Search onSearch={()=>alert("search")}/>
+            </>}            
+            description="boolean, &nbsp; 기본값 : false"
+            code={<>
+                <Typo>{'<Input.Search onSearch={()=>alert("search")}/>'}</Typo>                
+            </>} />            
             
         </>
     )
