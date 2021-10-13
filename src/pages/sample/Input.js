@@ -319,7 +319,40 @@ export default () => {
             code={<>
                 <Typo>{'<Input.Search onSearch={()=>alert("search")}/>'}</Typo>                
             </>} />            
+
+
+            <Divider/>
+            <PageHeader
+                className="site-page-header"
+                onBack={() => history.back()}
+                title={["Password",<Button key={keygen()} type="link" href="https://ant.design/components/input/#Input.Password" target="_blank">API</Button>]}
+            />
+
+            <Typo>{"<Input.Password/>"}</Typo><br/>
+
+            <Addrow
+            title="iconRender"
+            divider={true}
+            demo={<>
+                <Input.Password iconRender={(state)=> state ? <div>true</div> : <div>false</div>  }/>
+            </>}            
+            description="(visible) => ReactNode, &nbsp; 기본값 : -"
+            code={<>
+                <Typo>{'<Input.Password iconRender={(state)=> state ? <div>true</div> : <div>false</div>  }/>'}</Typo>                
+            </>} />            
+
+            <Addrow
+            title="iconRender"
+            divider={true}
+            demo={<>
+                <Input.Password visibilityToggle={true}/>
+            </>}            
+            description="boolean, &nbsp; 기본값 : true"
+            code={<>
+                <Typo>{'<Input.Password visibilityToggle={true}/>'}</Typo>                
+            </>} />
             
+
         </>
     )
 }
