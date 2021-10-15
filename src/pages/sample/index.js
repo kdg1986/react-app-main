@@ -6,6 +6,7 @@ import Button from '@/pages/sample/Button';
 import Input from '@/pages/sample/Input';
 import Radio from '@/pages/sample/Radio';
 import Select from '@/pages/sample/Select';
+import Checkbox from '@/pages/sample/Checkbox';
 
 import Content from '@/layout/Content';
 
@@ -37,6 +38,12 @@ export default ({location, match}) => {
                         <Link to={`${match.path}/select`} ><Title>Select</Title></Link>
                     </Col>                
                 </Row>
+                <Divider />
+                <Row>
+                    <Col flex="auto">                        
+                        <Link to={`${match.path}/checkbox`} ><Title>Checkbox</Title></Link>
+                    </Col>                
+                </Row>
             </>
         )
     }
@@ -49,6 +56,7 @@ export default ({location, match}) => {
                 <Route path="/sample/input" component={()=><Content><Input/></Content>}/>
                 <Route path="/sample/radio" component={()=><Content><Radio/></Content>}/>                
                 <Route path="/sample/select" component={()=><Content><Select/></Content>}/>
+                <Route path="/sample/checkbox" component={()=><Content><Checkbox/></Content>}/>
             </Switch>
         </>
     )
