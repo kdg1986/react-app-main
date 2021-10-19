@@ -5,59 +5,47 @@ import { Typography } from 'antd';
 import Button from '@/pages/sample/Button';
 import Input from '@/pages/sample/Input';
 import Radio from '@/pages/sample/Radio';
-import Select from '@/pages/sample/Select';
+import Select1 from '@/pages/sample/Select';
 import Checkbox from '@/pages/sample/Checkbox';
+import DatePicker from '@/pages/sample/DatePicker';
 
 import Content from '@/layout/Content';
+import { Fragment } from 'react';
+
+
+const list = [
+    { name : "Button", component : Button},
+    { name : "Input", component : Input},
+    { name : "Radio", component : Radio},
+    { name : "Select", component : Select1},
+    { name : "Checkbox", component : Checkbox},
+    { name : "DatePicker", component : DatePicker},
+]
+
 
 export default ({location, match}) => {
-    const { Title } = Typography;
+    const { Title } = Typography;    
     const Index = () => {
-        return (
-            <>
+        return list.map((item,idx) =>{
+            return <Fragment key={idx}>
+                {idx !== 0 && <Divider/>}
                 <Row>
                     <Col flex="auto">
-                        <Link to={`${match.path}/button`} ><Title>Button</Title></Link>
-                    </Col>                
+                        <Link to={`${match.path}/${item.name}`} ><Title>{item.name}</Title></Link>
+                    </Col>
                 </Row>
-                <Divider />
-                <Row>
-                    <Col flex="auto">                        
-                        <Link to={`${match.path}/input`} ><Title>Input</Title></Link>
-                    </Col>                
-                </Row>
-                <Divider />
-                <Row>
-                    <Col flex="auto">                        
-                        <Link to={`${match.path}/radio`} ><Title>Radio</Title></Link>
-                    </Col>                
-                </Row>
-                <Divider />
-                <Row>
-                    <Col flex="auto">                        
-                        <Link to={`${match.path}/select`} ><Title>Select</Title></Link>
-                    </Col>                
-                </Row>
-                <Divider />
-                <Row>
-                    <Col flex="auto">                        
-                        <Link to={`${match.path}/checkbox`} ><Title>Checkbox</Title></Link>
-                    </Col>                
-                </Row>
-            </>
-        )
+            </Fragment>
+        })
     }
 
     return (
-        <>
-            <Route exact path="/sample" component={() => <Content><Index/></Content>}/>
+        <Content>
+            <Route exact path="/sample" component={() => <Index/>}/>
             <Switch>
-                <Route path="/sample/button" component={()=><Content><Button/></Content>}/>
-                <Route path="/sample/input" component={()=><Content><Input/></Content>}/>
-                <Route path="/sample/radio" component={()=><Content><Radio/></Content>}/>                
-                <Route path="/sample/select" component={()=><Content><Select/></Content>}/>
-                <Route path="/sample/checkbox" component={()=><Content><Checkbox/></Content>}/>
+                {list.map((item,idx) =>{
+                    return <Route key={idx} path={`/sample/${item.name}`} component={()=><item.component/>}/>
+                })}                
             </Switch>
-        </>
+        </Content>
     )
 }

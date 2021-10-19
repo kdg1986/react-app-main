@@ -1,5 +1,4 @@
-import { Select,Button,Row, Col, Divider, PageHeader, Typography  } from 'antd';
-import { SearchOutlined,DownloadOutlined } from '@ant-design/icons';
+import { Select,Button,Row, Col, Divider, PageHeader, Typography, Space  } from 'antd';
 import {keygen} from '@/util';
 import { useState } from 'react';
 
@@ -14,14 +13,16 @@ const Addrow = props => {
             {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
             
             <Row>
-                <Col span={4}>{props.demo}</Col>                
+                <Col span={4}>
+                    <Space direction="vertical">{props.demo}</Space>
+                </Col>
                 <Col span={8}>
                     <Row justify="center">
                         <b>{props.description}</b>
                     </Row>
                 </Col>
                 <Col span={10}>
-                        {props.code}
+                    <Space direction="vertical">{props.code}</Space>
                 </Col>                
             </Row>
         </>
@@ -50,8 +51,8 @@ export default () => {
                 title={[ "Select", <Button key={keygen} type="link" href="https://ant.design/components/select/#API" target="_blank">API</Button> ]}
             />
             
-            <Typo>{"import { Select } from 'antd';"}</Typo><p/>
-            <Typo codeStyle={false} copyable={false}>{'const optionList = [ { label : "A1", value : "A1" }, { label : "A2", value : "A2" }, ]'}</Typo><br/>            
+            <Typo>{"import { Select } from 'antd';"}</Typo><br/>            
+            <Typo codeStyle={false} copyable={false}>{'const optionList = [ { label : "A1", value : "A1" }, { label : "A2", value : "A2" }, ]'}</Typo>
             
 
             <Addrow 
@@ -131,14 +132,14 @@ export default () => {
             title="size"
             divider={true}
             demo={<>
-                <YBSelect size="large" options={optionList}/><p/>
-                <YBSelect size="middle" options={optionList}/><p/>
+                <YBSelect size="large" options={optionList}/>
+                <YBSelect size="middle" options={optionList}/>
                 <YBSelect size="small" options={optionList}/>
             </>}
             description="large | middle | small, &nbsp; 기본값 : middle"
             code={<>
-                <Typo>{'<YBSelect size="large" options={optionList}/>'}</Typo><p/>
-                <Typo>{'<YBSelect size="middle" options={optionList}/>'}</Typo><p/>
+                <Typo>{'<YBSelect size="large" options={optionList}/>'}</Typo>
+                <Typo>{'<YBSelect size="middle" options={optionList}/>'}</Typo>
                 <Typo>{'<YBSelect size="small" options={optionList}/>'}</Typo>
             </>} />
 

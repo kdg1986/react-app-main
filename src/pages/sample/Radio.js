@@ -1,5 +1,4 @@
-import { Radio,Button,Input,Row, Col, Divider, PageHeader, Typography  } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { Radio,Button,Row, Col, Divider, PageHeader, Typography, Space  } from 'antd';
 import {keygen} from '@/util';
 
 const Typo = props => <Typography.Text 
@@ -13,14 +12,16 @@ const Addrow = props => {
             {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
             
             <Row>
-                <Col span={5}>{props.demo}</Col>                
+                <Col span={5}>
+                    <Space direction="vertical">{props.demo}</Space>
+                </Col>
                 <Col span={8}>
                     <Row justify="center">
                         <b>{props.description}</b>
                     </Row>
                 </Col>
                 <Col span={10}>
-                        {props.code}
+                    <Space direction="vertical">{props.code}</Space>
                 </Col>                
             </Row>
         </>
@@ -44,12 +45,12 @@ export default () => {
             title="autoFocus"
             divider={true}
             demo={<>
-                <Radio autoFocus={true}/> <p/>
+                <Radio autoFocus={true}/> 
                 <Radio.Button autoFocus={true}>button</Radio.Button>
             </>}            
             description="boolean, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{"<Radio autoFocus={true}/>"}</Typo><p/>
+                <Typo>{"<Radio autoFocus={true}/>"}</Typo>
                 <Typo>{"<Radio.Button autoFocus={true}>button</Radio.Button>"}</Typo>
             </>} />
 
@@ -57,12 +58,12 @@ export default () => {
             title="checked"
             divider={true}
             demo={<>
-                <Radio checked={true}/> <p/>
+                <Radio checked={true}/> 
                 <Radio.Button checked={true}>button</Radio.Button>
             </>}            
             description="boolean, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{"<Radio checked={true}/>"}</Typo><p/>
+                <Typo>{"<Radio checked={true}/>"}</Typo>
                 <Typo>{"<Radio.Button checked={true}>button</Radio.Button>"}</Typo>
             </>} />
 
@@ -70,12 +71,12 @@ export default () => {
             title="defaultChecked"
             divider={true}
             demo={<>
-                <Radio defaultChecked={true}/> <p/>
+                <Radio defaultChecked={true}/> 
                 <Radio.Button defaultChecked={true}>button</Radio.Button>
             </>}            
             description="boolean, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{"<Radio defaultChecked={true}/>"}</Typo><p/>
+                <Typo>{"<Radio defaultChecked={true}/>"}</Typo>
                 <Typo>{"<Radio.Button defaultChecked={true}>button</Radio.Button>"}</Typo>
             </>} />
 
@@ -83,12 +84,12 @@ export default () => {
             title="disabled"
             divider={true}
             demo={<>
-                <Radio disabled={true}/> <p/>
+                <Radio disabled={true}/> 
                 <Radio.Button disabled={true}>button</Radio.Button>
             </>}            
             description="boolean, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{"<Radio disabled={true}/>"}</Typo><p/>
+                <Typo>{"<Radio disabled={true}/>"}</Typo>
                 <Typo>{"<Radio.Button disabled={true}>button</Radio.Button>"}</Typo>
             </>} />
            
@@ -96,12 +97,12 @@ export default () => {
             title="value"
             divider={true}
             demo={<>
-                <Radio value="1"/> <p/>
+                <Radio value="1"/> 
                 <Radio.Button value="1">button</Radio.Button>
             </>}            
             description="boolean, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{'<Radio value="1"/>'}</Typo><p/>
+                <Typo>{'<Radio value="1"/>'}</Typo>
                 <Typo>{'<Radio.Button value="1">button</Radio.Button>'}</Typo>
             </>} />
 
@@ -120,7 +121,7 @@ export default () => {
                     <Radio.Button value="1">1</Radio.Button>
                     <Radio.Button value="2">2</Radio.Button>
                     <Radio.Button value="3">3</Radio.Button>                    
-                </Radio.Group><p/>
+                </Radio.Group>
                 <Radio.Group buttonStyle="solid">
                     <Radio.Button value="1">1</Radio.Button>
                     <Radio.Button value="2">2</Radio.Button>
@@ -135,7 +136,7 @@ export default () => {
     <Radio.Button value="2">2</Radio.Button>
     <Radio.Button value="3">3</Radio.Button>                    
 </Radio.Group>`}</pre>
-                </Typo><p/>
+                </Typo>
                 <Typo copyable={false} codeStyle={false}>
 <pre>{`<Radio.Group buttonStyle="solid">
     <Radio.Button value="1">1</Radio.Button>
@@ -170,7 +171,7 @@ export default () => {
             title="options"
             divider={true}
             demo={<>
-                <Radio.Group defaultValue="2" options={["1","2","3"]}></Radio.Group><p/>
+                <Radio.Group defaultValue="2" options={["1","2","3"]}></Radio.Group>
                 <Radio.Group defaultValue="3" options={[
                     { label: "a" ,value: "1"  },
                     { label: "b" ,value: "2" ,disabled : true },
@@ -181,7 +182,7 @@ export default () => {
             code={<>
             <Typo copyable={false} codeStyle={false}>
 <pre>{`<Radio.Group defaultValue="2" options={["1","2","3"]}></Radio.Group>`}</pre>
-                </Typo><p/>
+                </Typo>
                 <Typo copyable={false} codeStyle={false}>
 <pre>{`<Radio.Group defaultValue="3" options={[
     { label: "a" ,value: "1"  },
@@ -206,16 +207,16 @@ export default () => {
             title="size"
             divider={true}
             demo={<>
-                <Radio.Group defaultValue="2" options={["1","2","3"]} optionType="button"/><p/>
-                <Radio.Group defaultValue="2" options={["1","2","3"]} size="large" optionType="button"/><p/>                
-                <Radio.Group defaultValue="2" options={["1","2","3"]} size="middle" optionType="button"/><p/>
+                <Radio.Group defaultValue="2" options={["1","2","3"]} optionType="button"/>
+                <Radio.Group defaultValue="2" options={["1","2","3"]} size="large" optionType="button"/>                
+                <Radio.Group defaultValue="2" options={["1","2","3"]} size="middle" optionType="button"/>
                 <Radio.Group defaultValue="2" options={["1","2","3"]} size="small" optionType="button"/>
             </>}            
             description="large | middle | small, &nbsp; 기본값 : -"
             code={<>
-            <Typo>{`<Radio.Group defaultValue="2" options={["1","2","3"]} optionType="button"/>`}</Typo><p/>
-            <Typo>{`<Radio.Group defaultValue="2" options={["1","2","3"]} size="large" optionType="button"/>`}</Typo><p/>
-            <Typo>{`<Radio.Group defaultValue="2" options={["1","2","3"]} size="middle" optionType="button"/>`}</Typo><p/>
+            <Typo>{`<Radio.Group defaultValue="2" options={["1","2","3"]} optionType="button"/>`}</Typo>
+            <Typo>{`<Radio.Group defaultValue="2" options={["1","2","3"]} size="large" optionType="button"/>`}</Typo>
+            <Typo>{`<Radio.Group defaultValue="2" options={["1","2","3"]} size="middle" optionType="button"/>`}</Typo>
             <Typo>{`<Radio.Group defaultValue="2" options={["1","2","3"]} size="small" optionType="button"/>`}</Typo>
             </>}/>
         </>

@@ -1,4 +1,4 @@
-import { Select,Button,Input,Row, Col, Divider, PageHeader, Typography  } from 'antd';
+import { Button,Input,Row, Col, Divider, PageHeader, Typography,Space  } from 'antd';
 import { SearchOutlined,DownloadOutlined } from '@ant-design/icons';
 import {keygen} from '@/util';
 
@@ -13,14 +13,16 @@ const Addrow = props => {
             {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
             
             <Row>
-                <Col span={5}>{props.demo}</Col>                
+                <Col span={5}>
+                    <Space direction="vertical">{props.demo}</Space>
+                </Col>
                 <Col span={8}>
                     <Row justify="center">
                         <b>{props.description}</b>
                     </Row>
                 </Col>
                 <Col span={9}>
-                        {props.code}
+                    <Space direction="vertical">{props.code}</Space>
                 </Col>                
             </Row>
         </>
@@ -141,15 +143,15 @@ export default () => {
             title="size"
             divider={true}
             demo={<>
-                <Input size="large" /><p/>
-                <Input size="middle" /><p/>
+                <Input size="large" />
+                <Input size="middle" />
                 <Input size="small" />
             </>}            
             description="large | middle | small, &nbsp; 기본값 : -"
             code={<>
-                <Typo>{'<Input size="large" />'}</Typo><p/>
-                <Typo>{'<Input size="middle" />'}</Typo><p/>
-                <Typo>{'<Input size="small" />'}</Typo><p/>
+                <Typo>{'<Input size="large" />'}</Typo>
+                <Typo>{'<Input size="middle" />'}</Typo>
+                <Typo>{'<Input size="small" />'}</Typo>
             </>} />
             
             <Addrow
@@ -198,12 +200,12 @@ export default () => {
             title="autoSize"
             divider={true}
             demo={<>
-                <Input.TextArea autoSize={true} /><p/>
+                <Input.TextArea autoSize={true} />
                 <Input.TextArea autoSize={{ minRows: 2, maxRows: 6 }} />
             </>}            
             description="true | false or { minRows: 2, maxRows: 6 }, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{'<Input.TextArea autoSize={true} />'}</Typo><p/>
+                <Typo>{'<Input.TextArea autoSize={true} />'}</Typo>
                 <Typo>{'<Input.TextArea autoSize={{ minRows: 2, maxRows: 6 }} />'}</Typo>                
             </>} />
 
@@ -244,12 +246,12 @@ export default () => {
             title="showCount"
             divider={true}
             demo={<>
-                <Input.TextArea showCount={true} /><p/>
+                <Input.TextArea showCount={true} />
                 <Input.TextArea showCount={{ formatter : (count)=> console.log(count) }} />
             </>}            
             description="boolean | object, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{'<Input.TextArea showCount={true} />'}</Typo><p/>
+                <Typo>{'<Input.TextArea showCount={true} />'}</Typo>
                 <Typo>{'<Input.TextArea showCount={{ formatter : (count)=> console.log(count) }} />'}</Typo>
             </>} />
 
@@ -289,12 +291,12 @@ export default () => {
             title="enterButton"
             divider={true}
             demo={<>
-                <Input.Search enterButton={true}/><p/>
+                <Input.Search enterButton={true}/>
                 <Input.Search enterButton={<h1>Search</h1>}/>
             </>}            
             description="boolean | ReactNode, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{'<Input.Search enterButton={true}/>'}</Typo><p/>
+                <Typo>{'<Input.Search enterButton={true}/>'}</Typo>
                 <Typo>{'<Input.Search enterButton={<h1>Search</h1>}/>'}</Typo>                
             </>} />
 

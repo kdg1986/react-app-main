@@ -1,7 +1,6 @@
-import { Checkbox,Button,Row, Col, Divider, PageHeader, Typography  } from 'antd';
-import { SearchOutlined,DownloadOutlined } from '@ant-design/icons';
+import { Checkbox,Button,Row, Col, Divider, PageHeader, Typography,Space  } from 'antd';
 import {keygen} from '@/util';
-import { useState } from 'react';
+
 
 const Typo = props => <Typography.Text 
                       code={props.codeStyle === false ? false : true} strong="true" 
@@ -14,14 +13,16 @@ const Addrow = props => {
             {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
             
             <Row>
-                <Col span={4}>{props.demo}</Col>                
+                <Col span={4}>
+                    <Space direction="vertical">{props.demo}</Space>
+                </Col>
                 <Col span={8}>
                     <Row justify="center">
                         <b>{props.description}</b>
                     </Row>
                 </Col>
-                <Col span={10}>
-                        {props.code}
+                <Col span={10}>                        
+                    <Space direction="vertical">{props.code}</Space>
                 </Col>                
             </Row>
         </>
@@ -41,7 +42,7 @@ export default () => {
                 title={[ "Checkbox", <Button key={keygen} type="link" href="https://ant.design/components/checkbox/#Checkbox" target="_blank">API</Button> ]}
             />
             
-            <Typo>{"import { Checkbox } from 'antd';"}</Typo><p/>
+            <Typo>{"import { Checkbox } from 'antd';"}</Typo>
 
             <Addrow
             title="autoFocus"
@@ -116,7 +117,7 @@ export default () => {
                 title={[ "Checkbox.Group", <Button key={keygen} type="link" href="https://ant.design/components/checkbox/#Checkbox-Group" target="_blank">API</Button> ]}
             />     
 
-            <Typo>{"<Checkbox.Group/>"}</Typo><p/>
+            <Typo>{"<Checkbox.Group/>"}</Typo>
 
             <Typo codeStyle={false} copyable={false}>{"const op = [{ label: 'Apple', value: 'A' },{ label: 'Pear', value: 'P' },]"}</Typo>
 
@@ -124,12 +125,12 @@ export default () => {
             title="options"
             divider={true}
             demo={<>
-                <Checkbox.Group options={op} /><p/>
+                <Checkbox.Group options={op} />
                 <Checkbox.Group options={["Apple","Pear"]} />
             </>}
             description="obj{ label : string, value : string } | string[] , &nbsp; 기본값 : []"
             code={<>
-                <Typo>{'<Checkbox.Group options={op} />'}</Typo><p/>
+                <Typo>{'<Checkbox.Group options={op} />'}</Typo>
                 <Typo>{'<Checkbox.Group options={["Apple","Pear"]} />'}</Typo>
             </>} />
 

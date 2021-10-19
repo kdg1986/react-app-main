@@ -1,4 +1,4 @@
-import { Button,Row, Col, Divider, PageHeader, Typography  } from 'antd';
+import { Button,Row, Col, Divider, PageHeader, Typography,Space  } from 'antd';
 import { SearchOutlined,DownloadOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -13,14 +13,18 @@ const Addrow = props => {
             {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
             
             <Row>
-                <Col span={5}>{props.demo}</Col>                
+                <Col span={5}>
+                    <Space direction="vertical">{props.demo}</Space>
+                </Col>                
                 <Col span={8}>
                     <Row justify="center">
                         <b>{props.description}</b>
                     </Row>
                 </Col>
                 <Col span={9}>
+                    <Space direction="vertical">
                         {props.code}
+                    </Space>    
                 </Col>                
             </Row>
         </>
@@ -42,12 +46,12 @@ export default () => {
             title="block"
             divider={true}            
             demo={<>
-                <Button block={true}>black Button</Button><p/>
-                <Button block={false}>black Button</Button>
+                <Button block={true}>block Button</Button>
+                <Button block={false}>block Button</Button>
             </>}            
             description="true | false, &nbsp; 기본값 : false"
             code={<>
-                <Typo>{"<Button block={true}>black Button</Button>"}</Typo><p/>
+                <Typo>{"<Button block={true}>black Button</Button>"}</Typo>
                 <Typo>{"<Button block={false}>black Button</Button>"}</Typo>
             </>} />
 
@@ -85,8 +89,8 @@ export default () => {
             demo={<Button icon={<SearchOutlined/>}>icon</Button>}
             description="ReactNode, &nbsp;기본값 : -"
             code={<>
-                <Typo>{"import { SearchOutlined } from '@ant-design/icons';"}</Typo><p/>
-                <Typo>{'<Button icon={<SearchOutlined/>}>icon</Button>'}</Typo><p/>                    
+                <Typo>{"import { SearchOutlined } from '@ant-design/icons';"}</Typo>
+                <Typo>{'<Button icon={<SearchOutlined/>}>icon</Button>'}</Typo>                   
             </>} />
 
            <Addrow
@@ -102,12 +106,12 @@ export default () => {
             title="shape"
             divider={true} 
             demo={<>                
-                <Button shape="circle">circle</Button><p/>
+                <Button shape="circle">circle</Button>
                 <Button shape="round">round</Button>
             </>}
             description="default | circle | round, &nbsp;기본값 : default"
             code={<>
-                <Typo>{'<Button shape="circle">circle</Button>'}</Typo><p/>                
+                <Typo>{'<Button shape="circle">circle</Button>'}</Typo>
                 <Typo>{'<Button shape="round">round</Button>'}</Typo>                
             </>} />
 
@@ -122,20 +126,20 @@ export default () => {
             title="type" 
             divider={true} 
             demo={<>
-                <Button type="primary">primary</Button><p/>
-                <Button type="ghost">ghost</Button><p/>
-                <Button type="dashed">dashed</Button><p/>
-                <Button type="link">link</Button><p/>
-                <Button type="text">text</Button><p/>
+                <Button type="primary">primary</Button>
+                <Button type="ghost">ghost</Button>
+                <Button type="dashed">dashed</Button>
+                <Button type="link">link</Button>
+                <Button type="text">text</Button>
                 <Button type="default">default</Button>
             </>}
             description="String, &nbsp; 기본값 : default"
             code={<>
-                <Typo>{'<Button type="primary">primary</Button>'}</Typo><p/>
-                <Typo>{'<Button type="ghost">ghost</Button>'}</Typo><p/>
-                <Typo>{'<Button type="dashed">dashed</Button>'}</Typo><p/>
-                <Typo>{'<Button type="link">link</Button>'}</Typo><p/>
-                <Typo>{'<Button type="text">text</Button>'}</Typo><p/>
+                <Typo>{'<Button type="primary">primary</Button>'}</Typo>
+                <Typo>{'<Button type="ghost">ghost</Button>'}</Typo>
+                <Typo>{'<Button type="dashed">dashed</Button>'}</Typo>
+                <Typo>{'<Button type="link">link</Button>'}</Typo>
+                <Typo>{'<Button type="text">text</Button>'}</Typo>
                 <Typo>{'<Button type="default">default</Button>'}</Typo>
             </>} />
 
