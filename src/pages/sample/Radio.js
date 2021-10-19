@@ -1,32 +1,7 @@
 import { Radio,Button,Row, Col, Divider, PageHeader, Typography, Space  } from 'antd';
 import {keygen} from '@/util';
-
-const Typo = props => <Typography.Text 
-                      code={props.codeStyle === false ? false : true} strong="true" 
-                      copyable={props.copyable === false ? false : true}>{ props.children}</Typography.Text>
-
-const Addrow = props => {
-    return(
-        <>  
-            {props.divider && <Divider/>}
-            {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
-            
-            <Row>
-                <Col span={5}>
-                    <Space direction="vertical">{props.demo}</Space>
-                </Col>
-                <Col span={8}>
-                    <Row justify="center">
-                        <b>{props.description}</b>
-                    </Row>
-                </Col>
-                <Col span={10}>
-                    <Space direction="vertical">{props.code}</Space>
-                </Col>                
-            </Row>
-        </>
-    )
-}
+import Util from '@/pages/sample/SampleUtil';
+const { Addrow,Typo } = Util;
 
 export default () => {
     return(
@@ -130,14 +105,14 @@ export default () => {
             </>}            
             description="outline | solid, &nbsp; 기본값 : outline"
             code={<>
-                <Typo copyable={false} codeStyle={false}>
+                <Typo codeStyle={false}>
 <pre>{`<Radio.Group buttonStyle="outline">
     <Radio.Button value="1">1</Radio.Button>
     <Radio.Button value="2">2</Radio.Button>
     <Radio.Button value="3">3</Radio.Button>                    
 </Radio.Group>`}</pre>
                 </Typo>
-                <Typo copyable={false} codeStyle={false}>
+                <Typo codeStyle={false}>
 <pre>{`<Radio.Group buttonStyle="solid">
     <Radio.Button value="1">1</Radio.Button>
     <Radio.Button value="2">2</Radio.Button>
@@ -158,7 +133,7 @@ export default () => {
             </>}            
             description="any, &nbsp; 기본값 : -"
             code={<>
-                <Typo copyable={false} codeStyle={false}>
+                <Typo codeStyle={false}>
 <pre>{`<Radio.Group defaultValue="1">
     <Radio.Button value="1">1</Radio.Button>
     <Radio.Button value="2">2</Radio.Button>
@@ -180,10 +155,8 @@ export default () => {
             </>}            
             description="Array : string[] | { label: string value: string disabled?: boolean }, &nbsp; 기본값 : -"
             code={<>
-            <Typo copyable={false} codeStyle={false}>
-<pre>{`<Radio.Group defaultValue="2" options={["1","2","3"]}></Radio.Group>`}</pre>
-                </Typo>
-                <Typo copyable={false} codeStyle={false}>
+            <Typo>{`<Radio.Group defaultValue="2" options={["1","2","3"]}></Radio.Group>`}</Typo>
+                <Typo codeStyle={false}>
 <pre>{`<Radio.Group defaultValue="3" options={[
     { label: "a" ,value: "1"  },
     { label: "b" ,value: "2" ,disabled : true },

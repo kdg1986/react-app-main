@@ -5,7 +5,7 @@ import { Typography } from 'antd';
 import Button from '@/pages/sample/Button';
 import Input from '@/pages/sample/Input';
 import Radio from '@/pages/sample/Radio';
-import Select1 from '@/pages/sample/Select';
+import Select from '@/pages/sample/Select';
 import Checkbox from '@/pages/sample/Checkbox';
 import DatePicker from '@/pages/sample/DatePicker';
 
@@ -17,7 +17,7 @@ const list = [
     { name : "Button", component : Button},
     { name : "Input", component : Input},
     { name : "Radio", component : Radio},
-    { name : "Select", component : Select1},
+    { name : "Select", component : Select},
     { name : "Checkbox", component : Checkbox},
     { name : "DatePicker", component : DatePicker},
 ]

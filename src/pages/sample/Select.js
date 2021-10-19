@@ -1,33 +1,8 @@
-import { Select,Button,Row, Col, Divider, PageHeader, Typography, Space  } from 'antd';
+import { Select,Button, PageHeader, } from 'antd';
 import {keygen} from '@/util';
+import Util from '@/pages/sample/SampleUtil';
 import { useState } from 'react';
-
-const Typo = props => <Typography.Text 
-                      code={props.codeStyle === false ? false : true} strong="true" 
-                      copyable={props.copyable === false ? false : true}>{ props.children }</Typography.Text>
-
-const Addrow = props => {
-    return(
-        <>  
-            {props.divider && <Divider/>}
-            {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
-            
-            <Row>
-                <Col span={4}>
-                    <Space direction="vertical">{props.demo}</Space>
-                </Col>
-                <Col span={8}>
-                    <Row justify="center">
-                        <b>{props.description}</b>
-                    </Row>
-                </Col>
-                <Col span={10}>
-                    <Space direction="vertical">{props.code}</Space>
-                </Col>                
-            </Row>
-        </>
-    )
-}
+const { Addrow,Typo } = Util;
 
 const YBSelect = props => {
     let _props = { ...props };
@@ -109,7 +84,7 @@ export default () => {
             </>}
             description="multiple | tags, &nbsp; 기본값 : -"
             code={<>
-                <Typo copyable={false} codeStyle={false}>
+                <Typo codeStyle={false}>
 <pre>{`const [ openState , open ] = useState(false);
 <Button onClick={()=>open( !openState )}>toggle</Button>
 <YBSelect open={openState} options={optionList}/>

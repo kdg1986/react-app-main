@@ -1,34 +1,7 @@
-import { Checkbox,Button,Row, Col, Divider, PageHeader, Typography,Space  } from 'antd';
+import { Checkbox,Button, Divider, PageHeader, } from 'antd';
 import {keygen} from '@/util';
-
-
-const Typo = props => <Typography.Text 
-                      code={props.codeStyle === false ? false : true} strong="true" 
-                      copyable={props.copyable === false ? false : true}>{ props.children }</Typography.Text>
-
-const Addrow = props => {
-    return(
-        <>  
-            {props.divider && <Divider/>}
-            {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
-            
-            <Row>
-                <Col span={4}>
-                    <Space direction="vertical">{props.demo}</Space>
-                </Col>
-                <Col span={8}>
-                    <Row justify="center">
-                        <b>{props.description}</b>
-                    </Row>
-                </Col>
-                <Col span={10}>                        
-                    <Space direction="vertical">{props.code}</Space>
-                </Col>                
-            </Row>
-        </>
-    )
-}
-
+import Util from '@/pages/sample/SampleUtil';
+const { Addrow,Typo } = Util;
 
 export default () => {
     
@@ -117,7 +90,7 @@ export default () => {
                 title={[ "Checkbox.Group", <Button key={keygen} type="link" href="https://ant.design/components/checkbox/#Checkbox-Group" target="_blank">API</Button> ]}
             />     
 
-            <Typo>{"<Checkbox.Group/>"}</Typo>
+            <Typo>{"<Checkbox.Group/>"}</Typo><p/>
 
             <Typo codeStyle={false} copyable={false}>{"const op = [{ label: 'Apple', value: 'A' },{ label: 'Pear', value: 'P' },]"}</Typo>
 

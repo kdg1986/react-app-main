@@ -1,36 +1,10 @@
-import { DatePicker,Button,Row, Col, Divider, PageHeader, Typography,Space  } from 'antd';
+import { DatePicker,Button, PageHeader, Divider } from 'antd';
+import Util from '@/pages/sample/SampleUtil';
 import {keygen} from '@/util';
-
-const Typo = props => <Typography.Text 
-                      code={props.codeStyle === false ? false : true} strong="true" 
-                      copyable={props.copyable === false ? false : true}>{ props.children }</Typography.Text>
-
-const Addrow = props => {
-    return(
-        <>  
-            {props.divider && <Divider/>}
-            {props.title && <Typography.Title level={4}>{props.title}</Typography.Title>}
-            
-            <Row>
-                <Col span={4}>
-                    <Space direction="vertical">{props.demo}</Space>
-                </Col>
-                <Col span={8}>
-                    <Row justify="center">
-                        <b>{props.description}</b>
-                    </Row>
-                </Col>
-                <Col span={10}>
-                    <Space direction="vertical">{props.code}</Space>
-                </Col>                
-            </Row>
-        </>
-    )
-}
-
+const { Addrow,Typo } = Util;
+const { RangePicker } = DatePicker;
 
 export default () => {
-
     return(
         <>
             <PageHeader
@@ -144,9 +118,8 @@ export default () => {
                 }}  />
             </>}
             description="function, &nbsp; 기본값 : -"
-            code={<>
-                <Typo copyable={false} codeStyle={false}>
-<pre>{`<DatePicker dateRender={current => {
+            code={<><Typo codeStyle={false}>
+                <pre>{`<DatePicker dateRender={current => {
     const style = {};
     if (current.date() % 2 === 0) {
         style.border = '1px solid #1890ff';
@@ -157,8 +130,34 @@ export default () => {
             {current.date()}
         </div>
     );
-}}  />`}</pre>
-</Typo>
+}}  />`}</pre></Typo></>} />
+
+            <Divider/>
+            <PageHeader
+                className="site-page-header"
+                onBack={() => history.back()}
+                title={[ "RangePicker", <Button key={keygen} type="link" href="https://ant.design/components/date-picker/#RangePicker" target="_blank">API</Button> ]}
+            />            
+            <Typo>{"const { RangePicker } = DatePicker;"}</Typo><p/>
+            
+            <Addrow
+            title="picker"
+            divider={true}
+            demo={<>                
+                <RangePicker />                
+                <RangePicker picker="week" />
+                <RangePicker picker="month" />
+                <RangePicker picker="quarter" />
+                <RangePicker picker="year" />
+                
+            </>}
+            description="date | week | month | quarter | year, &nbsp; 기본값 : date"
+            code={<>
+                <Typo>{'<RangePicker  />'}</Typo>
+                <Typo>{'<RangePicker picker="week" />'}</Typo>
+                <Typo>{'<RangePicker picker="month" />'}</Typo>
+                <Typo>{'<RangePicker picker="quarter" />'}</Typo>
+                <Typo>{'<RangePicker picker="year" />'}</Typo>
             </>} />
 
 
