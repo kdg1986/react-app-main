@@ -14,10 +14,6 @@ git
 vscode
 ```
 
-`git clone http://172.16.30.31/webFe/WDMS.git`
-
-`cd WDMS`
-
 `npm i -g yarn(npm으로 해도됨..)`
 
 `yarn`
