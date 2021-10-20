@@ -1,8 +1,9 @@
 ## React-App-Main
-* React 17.0.2
-* webpack 5.48.0
-* Ant Design 4.16.13
-* electron 13.2.1
+
+- React 17.0.2
+- webpack 5.48.0
+- Ant Design 4.16.13
+- electron 13.2.1
 
 ## Installation
 
@@ -13,11 +14,11 @@ git
 vscode
 ```
 
-`git clone https://github.com/kdg1986/react-app-main.git`
+`git clone http://172.16.30.31/webFe/WDMS.git`
 
-`cd react-app-main`
+`cd WDMS`
 
-`npm i -g yarn`
+`npm i -g yarn(npm으로 해도됨..)`
 
 `yarn`
 
