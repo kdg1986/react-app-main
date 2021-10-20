@@ -2,7 +2,8 @@ const initalState = {
     title : "Main",
     showMenu : true,
     potalPosition: [],
-    breadcrumb : ""
+    breadcrumb : "",
+    theme : true
 }
 
 export default (state=initalState,action) => {
@@ -17,6 +18,8 @@ export default (state=initalState,action) => {
             return { ...state, potalPosition : action.payload }
         case 'layout/breadcrumb' :
             return { ...state, breadcrumb : action.payload }            
+        case 'layout/theme' :            
+            return { ...state, theme : action.payload }
         default :
             return state
     }

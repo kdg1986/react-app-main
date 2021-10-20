@@ -1,8 +1,9 @@
 import { Layout, Menu } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 
 const menu = [
   //{ code : "ERP",   title : "영업관리",     depth : 0, no : 0  },
@@ -21,12 +22,13 @@ export default () => {
   const { Sider } = Layout;
   const history = useHistory();
   const [ MenuList,setMenuList ] = useState([]);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  
   const handleClick = useCallback(data => {
     const breadcrumb = data.namePath ? `${data.namePath},${data.title}` : `${data.title}`
     dispatch({ type : 'layout/breadcrumb', payload : breadcrumb });
     history.push(data?.path || "/");
   },[history]) ;
+
   const createMenu = data => {           
     return data.reduce(( acc,cur,idx,arr )=>{
       const subData = menu.filter( item => item?.pcode && item.pcode === cur.code);
@@ -50,13 +52,15 @@ export default () => {
   },[])
 
   return(
-    <Sider width={200} className="site-layout-background">
-        <Menu
-          mode="inline"                    
-          style={{ height: '100%', borderRight: 0 }}
-        >
-          {MenuList}
-        </Menu>
-    </Sider>
+    <>
+      <Sider width={200} className="site-layout-background">        
+          <Menu
+            mode="inline"                    
+            style={{ height: '100%', borderRight: 0 }}
+          >
+            {MenuList}
+          </Menu>
+      </Sider>
+    </>
   )
 }

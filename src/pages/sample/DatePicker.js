@@ -1,4 +1,5 @@
 import { DatePicker,Button, PageHeader, Divider } from 'antd';
+import moment from 'moment';
 import Util from '@/pages/sample/SampleUtil';
 import {keygen} from '@/util';
 const { Addrow,Typo } = Util;
@@ -18,7 +19,7 @@ export default () => {
             title="picker"
             divider={true}
             demo={<>
-                <DatePicker  />
+                <DatePicker defaultValue={moment('2021-10-20')}  />
                 <DatePicker picker="week" />
                 <DatePicker picker="month" />
                 <DatePicker picker="quarter" />
@@ -144,7 +145,7 @@ export default () => {
             title="picker"
             divider={true}
             demo={<>                
-                <RangePicker />                
+                <RangePicker />
                 <RangePicker picker="week" />
                 <RangePicker picker="month" />
                 <RangePicker picker="quarter" />

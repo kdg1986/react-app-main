@@ -6,7 +6,6 @@ import Pages from '@/pages';
 import withComponentSplitting from '@/components/withComponentSplitting';
 import 'antd/dist/antd.css';
 import { hot } from 'react-hot-loader/root';
-import '@STYLE/style.scss';
 
 const App = () => (
   <>
@@ -14,7 +13,7 @@ const App = () => (
       <Header/>
       <Layout>
           <Left/>                            
-          <Route exact path="/" component={Pages}/>          
+          <Route exact path="/" component={Pages}/>
           <Switch>        
             {DEVELOP_MODE && <Route path="/sample/:name" component={withComponentSplitting( () => import('@/pages/sample') )}/>}
             {DEVELOP_MODE && <Route path="/sample" component={withComponentSplitting( () => import('@/pages/sample') )}/>}

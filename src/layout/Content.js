@@ -1,4 +1,4 @@
-import { Layout, Breadcrumb  } from 'antd';
+import { Layout, Breadcrumb } from 'antd';
 import '@STYLE/layout.css';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -15,7 +15,7 @@ export default props => {
     <Layout style={{ padding: '0 24px 24px' }}>
       <Breadcrumb style={{ margin: '16px 0' }}>
         {breadcrumb && breadcrumb.split(',').map( obj => <Breadcrumb.Item key={obj}>{obj}</Breadcrumb.Item> )}
-      </Breadcrumb>
+      </Breadcrumb>      
       <Content
       className="site-layout-background"
       style={{
