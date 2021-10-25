@@ -1,12 +1,12 @@
 module.exports = [    
     {
-        test: /\.(js|jsx)$/,
-        exclude: "/node_modules",
+        test: /\.(js|jsx|tsx|ts)$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         options: {    
-            plugins: ['@babel/plugin-transform-runtime'],
+            //plugins: [],
         },          
-    },
+    },    
     {
       test: /\.(css|scss)$/,
       use: [
