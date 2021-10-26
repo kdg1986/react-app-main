@@ -1,7 +1,8 @@
 import { Button, PageHeader } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import Util from '@/pages/sample/SampleUtil';
-const { Addrow,Typo } = Util;
+const { rowUtil,Typo } = Util;
+const AddRow = rowUtil();
 
 export default () => {
     return(
@@ -14,7 +15,7 @@ export default () => {
             
             <Typo>{"import { Button } from 'antd';"}</Typo><br/>            
             
-            <Addrow 
+            <AddRow 
             title="block"
             divider={true}            
             demo={<>
@@ -27,35 +28,35 @@ export default () => {
                 <Typo>{"<Button block={false}>black Button</Button>"}</Typo>
             </>} />
 
-            <Addrow 
+            <AddRow 
             title="danger"
             divider={true} 
             demo={<Button danger={true}>danger Button</Button>}            
             description="true | false, &nbsp; 기본값 : false"
             code={<Typo>{"<Button danger={true}>danger Button</Button>"}</Typo>} />
             
-            <Addrow
+            <AddRow
             title="disabled" 
             divider={true} 
             demo={<Button disabled={true}>disabled Button</Button>}            
             description="true | false, &nbsp; 기본값 : false"
             code={<Typo>{"<Button disabled={true}>disabled Button</Button>"}</Typo>} />
 
-            <Addrow
+            <AddRow
             title="ghost" 
             divider={true} 
             demo={["클릭=>",<Button ghost={true}>ghost Button</Button>]}
             description="true | false, &nbsp; 기본값 : false"
             code={<Typo>{"<Button ghost={true}>ghost Button</Button>"}</Typo>} />
            
-           <Addrow
+           <AddRow
             title="href" 
             divider={true} 
             demo={[<Button href="http://www.ybtour.co.kr">href</Button>]}
             description="String, &nbsp; 기본값 : -"
             code={<Typo>{'<Button href="www.ybtour.co.kr">href</Button>'}</Typo>} />
            
-           <Addrow
+           <AddRow
             title="icon" 
             divider={true} 
             demo={<Button icon={<SearchOutlined/>}>icon</Button>}
@@ -65,7 +66,7 @@ export default () => {
                 <Typo>{'<Button icon={<SearchOutlined/>}>icon</Button>'}</Typo>                   
             </>} />
 
-           <Addrow
+           <AddRow
             title="loading"
             divider={true} 
             demo={<Button loading={true}>loading</Button>}
@@ -74,7 +75,7 @@ export default () => {
                 <Typo>{"<Button loading={true}>loading</Button>"}</Typo>                
             </>} />
 
-           <Addrow
+           <AddRow
             title="shape"
             divider={true} 
             demo={<>                
@@ -87,14 +88,14 @@ export default () => {
                 <Typo>{'<Button shape="round">round</Button>'}</Typo>                
             </>} />
 
-            <Addrow
+            <AddRow
             title="target" 
             divider={true} 
             demo={[<Button href="http://www.ybtour.co.kr" target="_blank">target</Button>]}
             description="String, &nbsp; 기본값 : -"
             code={<Typo>{'<Button href="http://www.ybtour.co.kr" target="_blank">target</Button>'}</Typo>} />
 
-            <Addrow
+            <AddRow
             title="type" 
             divider={true} 
             demo={<>
@@ -116,7 +117,7 @@ export default () => {
             </>} />
 
 
-            <Addrow
+            <AddRow
             title="onClick" 
             divider={true} 
             demo={[<Button onClick={()=>alert("onClick")}>onClick</Button>]}

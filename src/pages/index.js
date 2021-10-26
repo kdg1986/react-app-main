@@ -1,5 +1,5 @@
 import { Route, Switch } from 'react-router';
-import withComponentSplitting from '@/components/withComponentSplitting';
+import withComponentSplitting from '@/components/hoc/withComponentSplitting';
 
 const System = withComponentSplitting( () => import('@/pages/system') );
 

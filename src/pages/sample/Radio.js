@@ -1,7 +1,8 @@
-import { Radio,Button,Row, Col, Divider, PageHeader, Typography, Space  } from 'antd';
+import { Radio,Button,Divider, PageHeader } from 'antd';
 import {keygen} from '@/util';
 import Util from '@/pages/sample/SampleUtil';
-const { Addrow,Typo } = Util;
+const { rowUtil,Typo } = Util;
+const Addrow = rowUtil();
 
 export default () => {
     return(

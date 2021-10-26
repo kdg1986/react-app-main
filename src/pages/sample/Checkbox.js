@@ -1,7 +1,9 @@
 import { Checkbox,Button, Divider, PageHeader, } from 'antd';
 import {keygen} from '@/util';
 import Util from '@/pages/sample/SampleUtil';
-const { Addrow,Typo } = Util;
+const { rowUtil,Typo } = Util;
+const Addrow = rowUtil();
+
 
 export default () => {
     

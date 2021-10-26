@@ -3,7 +3,7 @@ import Header from './Header';
 import Left from './Left'
 import { Route, Switch } from 'react-router';
 import Pages from '@/pages';
-import withComponentSplitting from '@/components/withComponentSplitting';
+import withComponentSplitting from '@/components/hoc/withComponentSplitting';
 import 'antd/dist/antd.css';
 import { hot } from 'react-hot-loader/root';
 

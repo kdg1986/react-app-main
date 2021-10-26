@@ -8,6 +8,8 @@ import Radio from '@/pages/sample/Radio';
 import Select from '@/pages/sample/Select';
 import Checkbox from '@/pages/sample/Checkbox';
 import DatePicker from '@/pages/sample/DatePicker';
+import AntdSwitch from '@/pages/sample/Switch';
+import Message from '@/pages/sample/Message';
 
 import Content from '@/layout/Content';
 import { Fragment } from 'react';
@@ -20,6 +22,8 @@ const list = [
     { name : "Select", component : Select},
     { name : "Checkbox", component : Checkbox},
     { name : "DatePicker", component : DatePicker},
+    { name : "Switch", component : AntdSwitch},
+    { name : "Message", component : Message},    
 ]
 
 

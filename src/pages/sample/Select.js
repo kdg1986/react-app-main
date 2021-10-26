@@ -1,23 +1,16 @@
-import { Select,Button, PageHeader, } from 'antd';
+import { Button, PageHeader, } from 'antd';
 import {keygen} from '@/util';
 import Util from '@/pages/sample/SampleUtil';
 import { useState } from 'react';
-const { Addrow,Typo } = Util;
-
-const YBSelect = props => {
-    let _props = { ...props };
-    !_props?.style && (_props.style = {})
-    !_props.style?.width && (_props.style = { ..._props.style, width : 150 });
-    
-    return <Select {..._props}>{props.children}</Select>
-}
+import YBSelect from '@/components/YBSelect';
+const { rowUtil,Typo } = Util;
+const Addrow = rowUtil();
 
 export default () => {
 
     const optionList = [ { label : "A1", value : "1" }, { label : "A2", value : "2" }, ]
     const [ openState , open ] = useState(false);
     
-
     return(
         <>
             <PageHeader
@@ -26,7 +19,7 @@ export default () => {
                 title={[ "Select", <Button key={keygen} type="link" href="https://ant.design/components/select/#API" target="_blank">API</Button> ]}
             />
             
-            <Typo>{"import { Select } from 'antd';"}</Typo><br/>            
+            <Typo>{"import YBSelect from '@/components/YBSelect';"}</Typo><br/>            
             <Typo codeStyle={false} copyable={false}>{'const optionList = [ { label : "A1", value : "A1" }, { label : "A2", value : "A2" }, ]'}</Typo>
             
 

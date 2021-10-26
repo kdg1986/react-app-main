@@ -1,8 +1,9 @@
-import { DatePicker,Button, PageHeader, Divider } from 'antd';
+import {  DatePicker,Button, PageHeader, Divider } from 'antd';
 import moment from 'moment';
 import Util from '@/pages/sample/SampleUtil';
 import {keygen} from '@/util';
-const { Addrow,Typo } = Util;
+const { rowUtil,Typo } = Util;
+const Addrow = rowUtil();
 const { RangePicker } = DatePicker;
 
 export default () => {
