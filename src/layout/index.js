@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router';
 import Pages from '@/pages';
 import withComponentSplitting from '@/components/hoc/withComponentSplitting';
 import 'antd/dist/antd.css';
-import { hot } from 'react-hot-loader/root';
+//import { hot } from 'react-hot-loader/root';
 
 const App = () => (
   <>
@@ -34,4 +34,4 @@ const App = () => (
   </>
 );
 
-export default hot(App);
+export default App;

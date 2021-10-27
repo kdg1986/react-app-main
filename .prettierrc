@@ -3,7 +3,11 @@
   "semi": true,
   "useTabs": false,
   "tabWidth": 2,
-  "trailingComma": "all",
+  "trailingComma": "es5",
   "printWidth": 100,
-  "arrowParens": "avoid"
+  "arrowParens": "always",
+  "requirePragma": false,
+  "jsxBracketSameLine": false,
+  "endOfLine": "lf",
+  "quoteProps": "as-needed"
 }

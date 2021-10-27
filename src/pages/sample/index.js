@@ -10,6 +10,7 @@ import Checkbox from '@/pages/sample/Checkbox';
 import DatePicker from '@/pages/sample/DatePicker';
 import AntdSwitch from '@/pages/sample/Switch';
 import Message from '@/pages/sample/Message';
+import Notification from '@/pages/sample/Notification';
 
 import Content from '@/layout/Content';
 import { Fragment } from 'react';
@@ -23,6 +24,7 @@ const list = [
   { name: 'DatePicker', component: DatePicker },
   { name: 'Switch', component: AntdSwitch },
   { name: 'Message', component: Message },
+  { name: 'Notification', component: Notification },
 ];
 
 export default ({ location, match }) => {

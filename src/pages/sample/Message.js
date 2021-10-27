@@ -1,5 +1,6 @@
-import { message, Button, PageHeader } from 'antd';
+import { Button, PageHeader } from 'antd';
 import Util from '@/pages/sample/SampleUtil';
+import YBMessage from '@/components/YBMessage';
 import { keygen } from '@/util';
 
 const { rowUtil, Typo } = Util;
@@ -23,7 +24,7 @@ export default () => {
           </Button>,
         ]}
       />
-      <Typo>{"import { message } from 'antd';"}</Typo>
+      <Typo>{"import YBMessage from '@/components/YBMessage';"}</Typo>
       <p />
 
       <Addrow
@@ -34,7 +35,7 @@ export default () => {
             <Button
               type="primary"
               onClick={() =>
-                message.success({
+                YBMessage.success({
                   content: 'Message',
                   duration: 0.5,
                   onClose: () => console.log('Message'),
@@ -48,7 +49,7 @@ export default () => {
         code={
           <>
             <Typo codeStyle={false}>
-              <pre>{`<Button type="primary" onClick={()=>message.success({
+              <pre>{`<Button type="primary" onClick={()=>YBMessage.success({
     content : "Message",
     duration : 0.5,
     onClose : () => console.log("Message")
@@ -66,7 +67,7 @@ export default () => {
             <Button
               type="primary"
               onClick={() =>
-                message.error({
+                YBMessage.error({
                   content: 'error',
                   duration: 0.5,
                   onClose: () => console.log('error'),
@@ -80,7 +81,7 @@ export default () => {
         code={
           <>
             <Typo codeStyle={false}>
-              <pre>{`<Button type="primary" onClick={()=>message.error({
+              <pre>{`<Button type="primary" onClick={()=>YBMessage.error({
     content : "Message",
     duration : 0.5,
     onClose : () => console.log("error")
@@ -98,7 +99,7 @@ export default () => {
             <Button
               type="primary"
               onClick={() =>
-                message.info({
+                YBMessage.info({
                   content: 'Message',
                   duration: 0.5,
                   onClose: () => console.log('info'),
@@ -112,7 +113,7 @@ export default () => {
         code={
           <>
             <Typo codeStyle={false}>
-              <pre>{`<Button type="primary" onClick={()=>message.info({
+              <pre>{`<Button type="primary" onClick={()=>YBMessage.info({
     content : "Message",
     duration : 0.5,
     onClose : () => console.log("info")
@@ -130,7 +131,7 @@ export default () => {
             <Button
               type="primary"
               onClick={() =>
-                message.warn({
+                YBMessage.warn({
                   content: 'warn',
                   duration: 0.5,
                   onClose: () => console.log('warn'),
@@ -144,7 +145,7 @@ export default () => {
         code={
           <>
             <Typo codeStyle={false}>
-              <pre>{`<Button type="primary" onClick={()=>message.warn({
+              <pre>{`<Button type="primary" onClick={()=>YBMessage.warn({
     content : "Message",
     duration : 0.5,
     onClose : () => console.log("warn")
@@ -162,7 +163,7 @@ export default () => {
             <Button
               type="primary"
               onClick={() =>
-                message.loading({
+                YBMessage.loading({
                   content: 'loading',
                   duration: 0.5,
                   onClose: () => console.log('loading'),
@@ -176,7 +177,7 @@ export default () => {
         code={
           <>
             <Typo codeStyle={false}>
-              <pre>{`<Button type="primary" onClick={()=>message.loading({
+              <pre>{`<Button type="primary" onClick={()=>YBMessage.loading({
     content : "loading",
     duration : 0.5,
     onClose : () => console.log("loading")
@@ -191,7 +192,7 @@ export default () => {
         divider={true}
         demo={
           <>
-            <Button type="primary" onClick={() => message.destroy()}>
+            <Button type="primary" onClick={() => YBMessage.destroy()}>
               destroy
             </Button>
           </>
@@ -199,7 +200,7 @@ export default () => {
         code={
           <>
             <Typo codeStyle={false}>
-              <pre>{`<Button type="primary" onClick={()=>message.destroy()}>destroy</Button>`}</pre>
+              <pre>{`<Button type="primary" onClick={()=>YBMessage.destroy()}>destroy</Button>`}</pre>
             </Typo>
           </>
         }
@@ -214,9 +215,9 @@ export default () => {
               type="primary"
               onClick={() => {
                 const key = 'Update';
-                message.loading({ content: 'Loading...', key });
+                YBMessage.loading({ content: 'Loading...', key });
                 setTimeout(() => {
-                  message.success({ content: 'Loaded!', key, duration: 2 });
+                  YBMessage.success({ content: 'Loaded!', key, duration: 2 });
                 }, 1000);
               }}
             >
@@ -227,9 +228,9 @@ export default () => {
               onClick={() => {
                 const key = 'Update1';
                 const key1 = 'Update2';
-                message.loading({ content: 'Loading...', key });
+                YBMessage.loading({ content: 'Loading...', key });
                 setTimeout(() => {
-                  message.success({ content: 'Loaded!', key: key1, duration: 2 });
+                  YBMessage.success({ content: 'Loaded!', key: key1, duration: 2 });
                 }, 1000);
               }}
             >
@@ -242,9 +243,9 @@ export default () => {
             <Typo codeStyle={false}>
               <pre>{`<Button type="primary" onClick={()=>{
     const key = "Update";
-    message.loading({ content: 'Loading...', key });
+    YBMessage.loading({ content: 'Loading...', key });
     setTimeout(() => {
-        message.success({ content: 'Loaded!', key, duration: 2 });
+      YBMessage.success({ content: 'Loaded!', key, duration: 2 });
     }, 1000);
 }}>key === key</Button>`}</pre>
             </Typo>
@@ -252,9 +253,9 @@ export default () => {
               <pre>{`<Button type="primary" onClick={()=>{
     const key = "Update";
     const key1 = "Update1";
-    message.loading({ content: 'Loading...', key });
+    YBMessage.loading({ content: 'Loading...', key });
     setTimeout(() => {
-        message.success({ content: 'Loaded!', key : key1, duration: 2 });
+      YBMessage.success({ content: 'Loaded!', key : key1, duration: 2 });
     }, 1000);
 }}>key !== key</Button>`}</pre>
             </Typo>
