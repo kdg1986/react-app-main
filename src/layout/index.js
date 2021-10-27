@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
-import Header from './Header';
-import Left from './Left';
+import Header from '@/layout/Header';
+import Left from '@/layout/Left';
 import { Route, Switch } from 'react-router';
 import Pages from '@/pages';
 import withComponentSplitting from '@/components/hoc/withComponentSplitting';
