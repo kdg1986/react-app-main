@@ -31,3 +31,7 @@ vscode
 `yarn build -> ./build`
 
 `yarn build-ele -> ./dist`
+
+## Other
+
+# vsCode
