@@ -11,12 +11,12 @@ export default handleActions({
     }
 },initialState);
 */
-export default (state = { display : false }, action) => {    
-    switch (action.type) {
-      case 'loading/fullIndicator':
-        return { display : !state.display }
-      default:
-        return state
-    }
-}
 
+export default (state = { display: false }, action) => {
+  switch (action.type) {
+    case 'loading/fullIndicator':
+      return { display: !state.display };
+    default:
+      return state;
+  }
+};

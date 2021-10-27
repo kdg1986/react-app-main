@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
-const withComponentSplitting = (getComponent,text) => {      
-    /*
+const withComponentSplitting = (getComponent, text) => {
+  /*
     const WithSplitting1 = ({usr}) => {
         const [ Splitted,setSplitted ] = React.useState(null);        
         getComponent().then(({ default: Splitted }) => { setSplitted(()=>Splitted); });
@@ -12,26 +12,26 @@ const withComponentSplitting = (getComponent,text) => {
         console.log( usr )
         return <Splitted {...usr} />;
     }*/
-return class extends Component {
+  return class extends Component {
     state = {
-      Splitted: null
+      Splitted: null,
     };
-    constructor(props) {      
+    constructor(props) {
       super(props);
-      getComponent().then(({ default: Splitted }) => {        
+      getComponent().then(({ default: Splitted }) => {
         this.setState({
-          Splitted
+          Splitted,
         });
       });
-    }    
-    render() {        
-      const { Splitted } = this.state;      
+    }
+    render() {
+      const { Splitted } = this.state;
       if (!Splitted) {
         return null;
       }
       return <Splitted {...this.props} />;
     }
-  }  
+  };
 };
 
 export default withComponentSplitting;

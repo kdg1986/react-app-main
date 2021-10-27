@@ -1,11 +1,11 @@
-const webpackConfig = require("./webpack.config");
+const webpackConfig = require('./webpack.config');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = (env, options) => {  
+module.exports = (env, options) => {
   options.devMode = false;
-  options.mode = "production";
+  options.mode = 'production';
   return {
-    ...webpackConfig(env, options),    
+    ...webpackConfig(env, options),
     optimization: {
       runtimeChunk: 'single',
       splitChunks: {
@@ -15,36 +15,37 @@ module.exports = (env, options) => {
             name: 'vendor',
             chunks: 'all',
           },
-        },        
+        },
       },
-      minimizer: [ 
-        new UglifyJsPlugin({          
+      minimizer: [
+        new UglifyJsPlugin({
           uglifyOptions: {
-            warnings: false,            
+            warnings: false,
           },
-          chunkFilter: (chunk) => {            
+          chunkFilter: chunk => {
             if (chunk.name === 'vendor') {
               return false;
-            }   
+            }
             return true;
-          }
+          },
         }),
       ],
     },
-    module: { //loaders
+    module: {
+      //loaders
       rules: [
-        ...require("./webpack.loaders").concat([
+        ...require('./webpack.loaders').concat([
           {
             test: /\.html$/,
             use: [
-            {
-                loader: "html-loader",
-                options: { minimize: true } 
-            }
-            ]
-          },                   
-        ])
-      ]
-    },  
-  }
+              {
+                loader: 'html-loader',
+                options: { minimize: true },
+              },
+            ],
+          },
+        ]),
+      ],
+    },
+  };
 };

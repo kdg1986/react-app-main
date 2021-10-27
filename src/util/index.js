@@ -1,3 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export function keygen() { return uuidv4() }
+export const keygen = () => {
+  return uuidv4();
+};
