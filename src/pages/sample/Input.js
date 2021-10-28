@@ -1,12 +1,13 @@
-import { Button, Input, Divider, PageHeader } from 'antd';
+import { Button, Divider, PageHeader } from 'antd';
 import { SearchOutlined, DownloadOutlined } from '@ant-design/icons';
 import { keygen } from '@/util';
 import Util from '@/pages/sample/SampleUtil';
 import YBValidation from '@/components/YBValidation';
+import { YBInput, YBTextArea, YBInputSearch, YBInputPassword } from '@/components/YBInput';
 
 const { rowUtil, Typo } = Util;
 const Addrow = rowUtil();
-const doSave = () => alert('doSave');
+const doSave = () => console.log('doSave');
 
 export default () => {
   return (
@@ -19,7 +20,7 @@ export default () => {
           title={[
             'Input',
             <Button
-              key={keygen()}
+              key={keygen}
               type="link"
               href="https://ant.design/components/input/#Input"
               target="_blank"
@@ -29,7 +30,7 @@ export default () => {
           ]}
         />
 
-        <Typo>{"import { Input } from 'antd';"}</Typo>
+        <Typo>{"import { YBInput } from '@/components/YBInput'"}</Typo>
         <br />
 
         <Addrow
@@ -37,13 +38,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input addonAfter={<SearchOutlined />} />
+              <YBInput validation="false" addonAfter={<SearchOutlined />} />
             </>
           }
           description="ReactNode, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input addonAfter={<SearchOutlined/>}/>'}</Typo>
+              <Typo>{'<YBInput addonAfter={<SearchOutlined/>}/>'}</Typo>
             </>
           }
         />
@@ -53,13 +54,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input addonBefore={<SearchOutlined />} />
+              <YBInput addonBefore={<SearchOutlined />} />
             </>
           }
           description="ReactNode, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input addonBefore={<SearchOutlined/>}/>'}</Typo>
+              <Typo>{'<YBInput addonBefore={<SearchOutlined/>}/>'}</Typo>
             </>
           }
         />
@@ -69,13 +70,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input allowClear={true} defaultValue="test" />
+              <YBInput allowClear={true} defaultValue="test" />
             </>
           }
           description="ReactNode, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input allowClear={true} defaultValue="test"/>'}</Typo>
+              <Typo>{'<YBInput allowClear={true} defaultValue="test"/>'}</Typo>
             </>
           }
         />
@@ -85,13 +86,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input bordered={false} defaultValue="test" />
+              <YBInput bordered={false} defaultValue="test" />
             </>
           }
           description="true | false, &nbsp; 기본값 : true"
           code={
             <>
-              <Typo>{'<Input bordered={true} defaultValue="test"/>'}</Typo>
+              <Typo>{'<YBInput bordered={true} defaultValue="test"/>'}</Typo>
             </>
           }
         />
@@ -101,13 +102,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input defaultValue="test" />
+              <YBInput defaultValue="test" />
             </>
           }
           description="string, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input defaultValue="test" />'}</Typo>
+              <Typo>{'<YBInput defaultValue="test" />'}</Typo>
             </>
           }
         />
@@ -117,13 +118,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input disabled={true} />
+              <YBInput disabled={true} />
             </>
           }
           description="true | false, &nbsp; 기본값 : false"
           code={
             <>
-              <Typo>{'<Input disabled={true} />'}</Typo>
+              <Typo>{'<YBInput disabled={true} />'}</Typo>
             </>
           }
         />
@@ -133,13 +134,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input maxLength={10} />
+              <YBInput maxLength={10} />
             </>
           }
           description="number, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input maxLength={10} />'}</Typo>
+              <Typo>{'<YBInput maxLength={10} />'}</Typo>
             </>
           }
         />
@@ -149,13 +150,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input prefix={<DownloadOutlined />} />
+              <YBInput prefix={<DownloadOutlined />} />
             </>
           }
           description="ReactNode, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input prefix={<DownloadOutlined/>} />'}</Typo>
+              <Typo>{'<YBInput prefix={<DownloadOutlined/>} />'}</Typo>
             </>
           }
         />
@@ -165,13 +166,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input suffix={<DownloadOutlined />} />
+              <YBInput suffix={<DownloadOutlined />} />
             </>
           }
           description="ReactNode, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input suffix={<DownloadOutlined/>} />'}</Typo>
+              <Typo>{'<YBInput suffix={<DownloadOutlined/>} />'}</Typo>
             </>
           }
         />
@@ -181,17 +182,17 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input size="large" />
-              <Input size="middle" />
-              <Input size="small" />
+              <YBInput size="large" />
+              <YBInput size="middle" />
+              <YBInput size="small" />
             </>
           }
           description="large | middle | small, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input size="large" />'}</Typo>
-              <Typo>{'<Input size="middle" />'}</Typo>
-              <Typo>{'<Input size="small" />'}</Typo>
+              <Typo>{'<YBInput size="large" />'}</Typo>
+              <Typo>{'<YBInput size="middle" />'}</Typo>
+              <Typo>{'<YBInput size="small" />'}</Typo>
             </>
           }
         />
@@ -201,13 +202,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input onChange={() => alert('onChange')} />
+              <YBInput onChange={() => alert('onChange')} />
             </>
           }
           description="function, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input onChange={()=>alert("onChange")} />'}</Typo>
+              <Typo>{'<YBInput onChange={()=>alert("onChange")} />'}</Typo>
             </>
           }
         />
@@ -217,13 +218,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input onPressEnter={() => alert('onPressEnter')} />
+              <YBInput onPressEnter={() => alert('onPressEnter')} />
             </>
           }
           description="function, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input onPressEnter={()=>alert("onPressEnter")} />'}</Typo>
+              <Typo>{'<YBInput onPressEnter={()=>alert("onPressEnter")} />'}</Typo>
             </>
           }
         />
@@ -245,7 +246,7 @@ export default () => {
           ]}
         />
 
-        <Typo>{'<Input.TextArea/>'}</Typo>
+        <Typo>{'<YBTextArea/>'}</Typo>
         <br />
 
         <Addrow
@@ -253,13 +254,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.TextArea allowClear={true} />
+              <YBTextArea allowClear={true} />
             </>
           }
           description="boolean, &nbsp; 기본값 : false"
           code={
             <>
-              <Typo>{'<Input.TextArea allowClear={true} />'}</Typo>
+              <Typo>{'<YBTextArea allowClear={true} />'}</Typo>
             </>
           }
         />
@@ -269,15 +270,15 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.TextArea autoSize={true} />
-              <Input.TextArea autoSize={{ minRows: 2, maxRows: 6 }} />
+              <YBTextArea autoSize={true} />
+              <YBTextArea autoSize={{ minRows: 2, maxRows: 6 }} />
             </>
           }
           description="true | false or { minRows: 2, maxRows: 6 }, &nbsp; 기본값 : false"
           code={
             <>
-              <Typo>{'<Input.TextArea autoSize={true} />'}</Typo>
-              <Typo>{'<Input.TextArea autoSize={{ minRows: 2, maxRows: 6 }} />'}</Typo>
+              <Typo>{'<YBTextArea autoSize={true} />'}</Typo>
+              <Typo>{'<YBTextArea autoSize={{ minRows: 2, maxRows: 6 }} />'}</Typo>
             </>
           }
         />
@@ -287,13 +288,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.TextArea bordered={false} />
+              <YBTextArea bordered={false} />
             </>
           }
           description="boolean, &nbsp; 기본값 : true"
           code={
             <>
-              <Typo>{'<Input.TextArea bordered={false} />'}</Typo>
+              <Typo>{'<YBTextArea bordered={false} />'}</Typo>
             </>
           }
         />
@@ -303,13 +304,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.TextArea defaultValue="test" />
+              <YBTextArea defaultValue="test" />
             </>
           }
           description="string, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input.TextArea defaultValue="test" />'}</Typo>
+              <Typo>{'<YBTextArea defaultValue="test" />'}</Typo>
             </>
           }
         />
@@ -319,13 +320,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.TextArea maxLength={10} />
+              <YBTextArea maxLength={10} />
             </>
           }
           description="number, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input.TextArea maxLength={10} />'}</Typo>
+              <Typo>{'<YBTextArea maxLength={10} />'}</Typo>
             </>
           }
         />
@@ -335,16 +336,16 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.TextArea showCount={true} />
-              <Input.TextArea showCount={{ formatter: (count) => console.log(count) }} />
+              <YBTextArea showCount={true} />
+              <YBTextArea showCount={{ formatter: (count) => console.log(count) }} />
             </>
           }
           description="boolean | object, &nbsp; 기본값 : false"
           code={
             <>
-              <Typo>{'<Input.TextArea showCount={true} />'}</Typo>
+              <Typo>{'<YBTextArea showCount={true} />'}</Typo>
               <Typo>
-                {'<Input.TextArea showCount={{ formatter : (count)=> console.log(count) }} />'}
+                {'<YBTextArea showCount={{ formatter : (count)=> console.log(count) }} />'}
               </Typo>
             </>
           }
@@ -355,13 +356,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.TextArea onPressEnter={(obj) => console.log(obj)} />
+              <YBTextArea onPressEnter={(obj) => console.log(obj)} />
             </>
           }
           description="function, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input.TextArea onPressEnter={(obj)=> console.log(obj)} />'}</Typo>
+              <Typo>{'<YBTextArea onPressEnter={(obj)=> console.log(obj)} />'}</Typo>
             </>
           }
         />
@@ -371,13 +372,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.TextArea onResize={(obj) => console.log(obj)} />
+              <YBTextArea onResize={(obj) => console.log(obj)} />
             </>
           }
           description="function, &nbsp; 기본값 : -"
           code={
             <>
-              <Typo>{'<Input.TextArea onResize={(obj)=> console.log(obj)} />'}</Typo>
+              <Typo>{'<YBTextArea onResize={(obj)=> console.log(obj)} />'}</Typo>
             </>
           }
         />
@@ -399,7 +400,7 @@ export default () => {
           ]}
         />
 
-        <Typo>{'<Input.Search/>'}</Typo>
+        <Typo>{'<YBInputSearch/>'}</Typo>
         <br />
 
         <Addrow
@@ -407,15 +408,15 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.Search enterButton={true} />
-              <Input.Search enterButton={<h1>Search</h1>} />
+              <YBInputSearch enterButton={true} />
+              <YBInputSearch enterButton={<h1>Search</h1>} />
             </>
           }
           description="boolean | ReactNode, &nbsp; 기본값 : false"
           code={
             <>
-              <Typo>{'<Input.Search enterButton={true}/>'}</Typo>
-              <Typo>{'<Input.Search enterButton={<h1>Search</h1>}/>'}</Typo>
+              <Typo>{'<YBInputSearch enterButton={true}/>'}</Typo>
+              <Typo>{'<YBInputSearch enterButton={<h1>Search</h1>}/>'}</Typo>
             </>
           }
         />
@@ -425,13 +426,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.Search loading={true} />
+              <YBInputSearch loading={true} />
             </>
           }
           description="boolean, &nbsp; 기본값 : false"
           code={
             <>
-              <Typo>{'<Input.Search loading={true}/>'}</Typo>
+              <Typo>{'<YBInputSearch loading={true}/>'}</Typo>
             </>
           }
         />
@@ -441,13 +442,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.Search onSearch={() => alert('search')} />
+              <YBInputSearch onSearch={() => alert('search')} />
             </>
           }
           description="boolean, &nbsp; 기본값 : false"
           code={
             <>
-              <Typo>{'<Input.Search onSearch={()=>alert("search")}/>'}</Typo>
+              <Typo>{'<YBInputSearch onSearch={()=>alert("search")}/>'}</Typo>
             </>
           }
         />
@@ -469,7 +470,7 @@ export default () => {
           ]}
         />
 
-        <Typo>{'<Input.Password/>'}</Typo>
+        <Typo>{'<YBInputPassword/>'}</Typo>
         <br />
 
         <Addrow
@@ -477,7 +478,7 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.Password
+              <YBInputPassword
                 iconRender={(state) => (state ? <div>true</div> : <div>false</div>)}
               />
             </>
@@ -487,7 +488,7 @@ export default () => {
             <>
               <Typo>
                 {
-                  '<Input.Password iconRender={(state)=> state ? <div>true</div> : <div>false</div>  }/>'
+                  '<YBInputPassword iconRender={(state)=> state ? <div>true</div> : <div>false</div>  }/>'
                 }
               </Typo>
             </>
@@ -499,13 +500,13 @@ export default () => {
           divider={true}
           demo={
             <>
-              <Input.Password visibilityToggle={true} />
+              <YBInputPassword visibilityToggle={true} />
             </>
           }
           description="boolean, &nbsp; 기본값 : true"
           code={
             <>
-              <Typo>{'<Input.Password visibilityToggle={true}/>'}</Typo>
+              <Typo>{'<YBInputPassword visibilityToggle={true}/>'}</Typo>
             </>
           }
         />

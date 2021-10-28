@@ -1,19 +1,28 @@
 import { useEffect, useRef } from 'react';
 
-const validation = (ref) => {
-  console.log(ref.current.querySelectorAll('input'));
-  alert('validation');
-  return true;
-};
-
 const ref = (props) => {
   const ref = useRef();
+  let validationList;
+  const validation = () => {
+    console.log(validationList);
+    return validationList.length === 0;
+  };
+
   const event = (e) => {
-    if (validation(ref)) {
+    if (validation()) {
       props?.onAfter && props.onAfter();
     }
   };
+
   useEffect(() => {
+    validationList = Array.prototype.slice
+      .call(document.querySelectorAll('span'))
+      .reduce((acc, cur, idx, arr) => {
+        if (cur.attributes?.validation && cur.getAttribute('validation') === 'true') {
+          acc = acc.concat(cur);
+        }
+        return acc;
+      }, []);
     props?.triggerID &&
       document.querySelector(`#${props.triggerID}`).addEventListener('click', event);
   }, []);
