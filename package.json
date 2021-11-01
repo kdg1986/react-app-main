@@ -48,7 +48,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "start": "webpack serve",
+    "start": "yarn && webpack serve",
     "build": "rm -rf build && webpack --config ./webpack.config.prd",
     "start-ele": "electron-forge start",
     "build-ele": "electron-forge package --arch x64 && electron-builder --win --x64",

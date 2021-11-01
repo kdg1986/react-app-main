@@ -12,11 +12,11 @@ export default () => {
         className="site-page-header"
         onBack={() => history.back()}
         title={[
-          'Alert',
+          'Modal',
           <Button
             key={keygen}
             type="link"
-            href="https://ant.design/components/message/#API"
+            href="https://ant.design/components/modal/#API"
             target="_blank"
           >
             API
