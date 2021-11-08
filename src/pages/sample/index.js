@@ -12,6 +12,7 @@ import AntdSwitch from '@/pages/sample/Switch';
 import Message from '@/pages/sample/Message';
 import Notification from '@/pages/sample/Notification';
 import Modal from '@/pages/sample/Modal';
+import Upload from '@/pages/sample/Upload';
 
 import Content from '@/layout/Content';
 import { Fragment } from 'react';
@@ -27,6 +28,7 @@ const list = [
   { name: 'Message', component: Message },
   { name: 'Notification', component: Notification },
   { name: 'Modal', component: Modal },
+  { name: 'Upload', component: Upload },
 ];
 
 export default ({ location, match }) => {

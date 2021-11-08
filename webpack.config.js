@@ -73,6 +73,13 @@ module.exports = (env, options) => {
       port: 3000,
       historyApiFallback: true,
       hot: true,
+      proxy: {
+        '/v2': {
+          target: 'https://www.mocky.io',
+          changeOrigin: true,
+          pathRewrite: { '^/v2': '' },
+        },
+      },
     },
   };
 };
