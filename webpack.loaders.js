@@ -8,7 +8,7 @@ module.exports = [
     },
   },
   {
-    test: /\.(css|scss)$/,
+    test: /\.(css|scss|less)$/,
     use: [
       {
         loader: require('mini-css-extract-plugin').loader,
@@ -23,6 +23,14 @@ module.exports = [
         },
       },
       'sass-loader',
+      {
+        loader: 'less-loader',
+        options: {
+          lessOptions: {
+            javascriptEnabled: true,
+          },
+        },
+      },
     ],
   },
   {

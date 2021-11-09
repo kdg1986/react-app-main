@@ -1,7 +1,8 @@
 import { DatePicker, Button, PageHeader, Divider } from 'antd';
-import moment from 'moment';
 import Util from '@/pages/sample/SampleUtil';
 import { keygen } from '@/util';
+//import DatePicker from '@/components/DatePicker.jsx';
+
 const { rowUtil, Typo } = Util;
 const Addrow = rowUtil();
 const { RangePicker } = DatePicker;
@@ -26,13 +27,12 @@ export default () => {
       />
       <Typo>{"import { DatePicker } from 'antd';"}</Typo>
       <p />
-
       <Addrow
         title="picker"
         divider={true}
         demo={
           <>
-            <DatePicker defaultValue={moment('2021-10-20')} />
+            {/*<DatePicker defaultValue={moment('2021-10-20')} />*/}
             <DatePicker picker="week" />
             <DatePicker picker="month" />
             <DatePicker picker="quarter" />
@@ -50,7 +50,6 @@ export default () => {
           </>
         }
       />
-
       <Addrow
         title="autoFocus"
         divider={true}
@@ -66,7 +65,6 @@ export default () => {
           </>
         }
       />
-
       <Addrow
         title="inputReadOnly"
         divider={true}
@@ -82,7 +80,6 @@ export default () => {
           </>
         }
       />
-
       <Addrow
         title="mode"
         divider={true}
@@ -106,7 +103,6 @@ export default () => {
           </>
         }
       />
-
       <Addrow
         title="size"
         divider={true}
@@ -126,13 +122,12 @@ export default () => {
           </>
         }
       />
-
       <Addrow
         title="disabledDate"
         divider={true}
         demo={
           <>
-            <DatePicker disabledDate={current => current.date() % 2 === 0} />
+            <DatePicker disabledDate={(current) => current.date() % 2 === 0} />
           </>
         }
         description="function, &nbsp; 기본값 : -"
@@ -142,14 +137,13 @@ export default () => {
           </>
         }
       />
-
       <Addrow
         title="dateRender"
         divider={true}
         demo={
           <>
             <DatePicker
-              dateRender={current => {
+              dateRender={(current) => {
                 const style = {};
                 if (current.date() % 2 === 0) {
                   style.border = '1px solid #1890ff';
@@ -184,7 +178,6 @@ export default () => {
           </>
         }
       />
-
       <Divider />
       <PageHeader
         className="site-page-header"
@@ -203,7 +196,6 @@ export default () => {
       />
       <Typo>{'const { RangePicker } = DatePicker;'}</Typo>
       <p />
-
       <Addrow
         title="picker"
         divider={true}
