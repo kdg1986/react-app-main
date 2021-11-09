@@ -21,6 +21,7 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^6.2.0",
+    "date-fns": "^2.25.0",
     "electron": "^13.2.1",
     "electron-builder": "^22.11.7",
     "html-loader": "^2.1.2",
@@ -38,7 +39,6 @@
     "react-dnd-html5-backend": "^14.0.1",
     "react-dom": "^17.0.2",
     "react-draggable": "^4.4.4",
-    "react-hot-loader": "^4.13.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "redux": "^4.1.1",
@@ -47,6 +47,7 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "uuid": "^8.3.2",
     "webpack": "^5.48.0",
+    "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },

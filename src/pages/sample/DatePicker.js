@@ -1,11 +1,11 @@
-import { DatePicker, Button, PageHeader, Divider } from 'antd';
+import { Button, PageHeader, Divider } from 'antd';
 import Util from '@/pages/sample/SampleUtil';
 import { keygen } from '@/util';
-//import DatePicker from '@/components/DatePicker.jsx';
+import YBDatePicker from '@/components/YBDatePicker';
 
 const { rowUtil, Typo } = Util;
 const Addrow = rowUtil();
-const { RangePicker } = DatePicker;
+const { RangePicker } = YBDatePicker;
 
 export default () => {
   return (
@@ -32,21 +32,21 @@ export default () => {
         divider={true}
         demo={
           <>
-            {/*<DatePicker defaultValue={moment('2021-10-20')} />*/}
-            <DatePicker picker="week" />
-            <DatePicker picker="month" />
-            <DatePicker picker="quarter" />
-            <DatePicker picker="year" />
+            {/*<YBDatePicker defaultValue={moment('2021-10-20')} />*/}
+            <YBDatePicker picker="week" />
+            <YBDatePicker picker="month" />
+            <YBDatePicker picker="quarter" />
+            <YBDatePicker picker="year" />
           </>
         }
         description="date | week | month | quarter | year, &nbsp; 기본값 : date"
         code={
           <>
-            <Typo>{'<DatePicker  />'}</Typo>
-            <Typo>{'<DatePicker picker="week" />'}</Typo>
-            <Typo>{'<DatePicker picker="month" />'}</Typo>
-            <Typo>{'<DatePicker picker="quarter" />'}</Typo>
-            <Typo>{'<DatePicker picker="year" />'}</Typo>
+            <Typo>{'<YBDatePicker  />'}</Typo>
+            <Typo>{'<YBDatePicker picker="week" />'}</Typo>
+            <Typo>{'<YBDatePicker picker="month" />'}</Typo>
+            <Typo>{'<YBDatePicker picker="quarter" />'}</Typo>
+            <Typo>{'<YBDatePicker picker="year" />'}</Typo>
           </>
         }
       />
@@ -55,13 +55,13 @@ export default () => {
         divider={true}
         demo={
           <>
-            <DatePicker autoFocus={true} />
+            <YBDatePicker autoFocus={true} />
           </>
         }
         description="boolean, &nbsp; 기본값 : false"
         code={
           <>
-            <Typo>{'<DatePicker autoFocus={true} />'}</Typo>
+            <Typo>{'<YBDatePicker autoFocus={true} />'}</Typo>
           </>
         }
       />
@@ -70,55 +70,33 @@ export default () => {
         divider={true}
         demo={
           <>
-            <DatePicker inputReadOnly={true} />
+            <YBDatePicker inputReadOnly={true} />
           </>
         }
         description="boolean, &nbsp; 기본값 : false"
         code={
           <>
-            <Typo>{'<DatePicker inputReadOnly={true} />'}</Typo>
+            <Typo>{'<YBDatePicker inputReadOnly={true} />'}</Typo>
           </>
         }
       />
-      <Addrow
-        title="mode"
-        divider={true}
-        demo={
-          <>
-            <DatePicker mode="time" />
-            <DatePicker mode="date" />
-            <DatePicker mode="month" />
-            <DatePicker mode="year" />
-            <DatePicker mode="decade" />
-          </>
-        }
-        description="boolean, &nbsp; 기본값 : -"
-        code={
-          <>
-            <Typo>{'<DatePicker mode="time"  />'}</Typo>
-            <Typo>{'<DatePicker mode="date"  />'}</Typo>
-            <Typo>{'<DatePicker mode="month"  />'}</Typo>
-            <Typo>{'<DatePicker mode="year"  />'}</Typo>
-            <Typo>{'<DatePicker mode="decade"  />'}</Typo>
-          </>
-        }
-      />
+
       <Addrow
         title="size"
         divider={true}
         demo={
           <>
-            <DatePicker size="large" />
-            <DatePicker size="middle" />
-            <DatePicker size="small" />
+            <YBDatePicker size="large" />
+            <YBDatePicker size="middle" />
+            <YBDatePicker size="small" />
           </>
         }
         description="large | middle | small, &nbsp; 기본값 : -"
         code={
           <>
-            <Typo>{'<DatePicker size="large"  />'}</Typo>
-            <Typo>{'<DatePicker size="middle"  />'}</Typo>
-            <Typo>{'<DatePicker size="small"  />'}</Typo>
+            <Typo>{'<YBDatePicker size="large"  />'}</Typo>
+            <Typo>{'<YBDatePicker size="middle"  />'}</Typo>
+            <Typo>{'<YBDatePicker size="small"  />'}</Typo>
           </>
         }
       />
@@ -127,13 +105,13 @@ export default () => {
         divider={true}
         demo={
           <>
-            <DatePicker disabledDate={(current) => current.date() % 2 === 0} />
+            <YBDatePicker disabledDate={(current) => current.date() % 2 === 0} />
           </>
         }
         description="function, &nbsp; 기본값 : -"
         code={
           <>
-            <Typo>{'<DatePicker disabledDate={current => current.date() % 2 === 0}  />'}</Typo>
+            <Typo>{'<YBDatePicker disabledDate={current => current.date() % 2 === 0}  />'}</Typo>
           </>
         }
       />
@@ -142,7 +120,7 @@ export default () => {
         divider={true}
         demo={
           <>
-            <DatePicker
+            <YBDatePicker
               dateRender={(current) => {
                 const style = {};
                 if (current.date() % 2 === 0) {
@@ -162,7 +140,7 @@ export default () => {
         code={
           <>
             <Typo codeStyle={false}>
-              <pre>{`<DatePicker dateRender={current => {
+              <pre>{`<YBDatePicker dateRender={current => {
     const style = {};
     if (current.date() % 2 === 0) {
         style.border = '1px solid #1890ff';

@@ -5,18 +5,21 @@ import {
   Card,
   Divider,
   Button,
-  DatePicker,
   Table,
   Input,
   Typography,
   Radio,
   Checkbox,
   Spin,
+  //DatePicker,
 } from 'antd';
 import { SearchOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+
+import { parse } from 'date-fns';
+import YBDatePicker from '@/components/YBDatePicker';
 
 /*
 axios.put(`${ELASTIC_URL}/demo/commonCode/ERP`,{
@@ -34,12 +37,13 @@ axios.put(`${ELASTIC_URL}/demo/commonCode/ERP`,{
     ])
 })
 */
-const ComboBox = props => {
+
+const ComboBox = (props) => {
   const { Option } = Select;
   /* key value */
   return (
     <Select {...props}>
-      {props.datasource.map(item => (
+      {props.datasource.map((item) => (
         <Option value={item.value} key={uuidv4()}>
           {item.text}
         </Option>
@@ -52,10 +56,10 @@ ComboBox.defaultProps = {
   defaultValue: '',
 };
 
-const RadioBtn = props => {
+const RadioBtn = (props) => {
   return (
     <Radio.Group {...props}>
-      {props.datasource.map(item => (
+      {props.datasource.map((item) => (
         <Radio value={item.value} key={uuidv4()}>
           {item.text}
         </Radio>
@@ -73,7 +77,7 @@ const getSystemList = async () => {
   return res;
 };
 
-const SearchOptions = props => {
+const SearchOptions = (props) => {
   const style = { padding: '8px 0' };
 
   const [state, setState] = useState({
@@ -92,16 +96,16 @@ const SearchOptions = props => {
   });
 
   useEffect(() => {
-    getSystemList().then(res => {
+    /*getSystemList().then(res => {
       setState({
         ...state,
         systemName: [{ value: '', text: '전체' }, ...JSON.parse(res.data._source.systemList)],
       });
-    });
+    });*/
     return () => console.log('cleanup SearchOptions');
   }, []);
 
-  const onChangeSystemName = async value => {
+  const onChangeSystemName = async (value) => {
     if (value) {
       const res = await axios.get(`${ELASTIC_URL}/demo/commonCode/${value}`);
       setState({
@@ -122,7 +126,7 @@ const SearchOptions = props => {
     }
   };
 
-  const onChangeTaskGbn1 = async value => {
+  const onChangeTaskGbn1 = async (value) => {
     if (value) {
       setState({ ...state, disabled2: false, selTaskGbn1: value });
     } else {
@@ -137,6 +141,14 @@ const SearchOptions = props => {
   return (
     <>
       <div style={style}>
+        {/*moment('2015/01/01', 'YYYY/MM/DD')*/}
+        {/*console.log(parse('2015/01/22', 'yyyy/MM/dd', new Date()))*/}
+
+        <YBDatePicker
+          defaultValue={parse('20150122', 'yyyyMMdd', new Date())}
+          format="yyyy-MM-dd"
+        />
+
         <Row>
           <Col span={2}>시스템명</Col>
           <Col span={6}>
@@ -178,8 +190,8 @@ const SearchOptions = props => {
           </Col>
           <Col span={2}>수정일자</Col>
           <Col span={6}>
-            <DatePicker onChange={(date, str) => setState({ ...state, startDt: str })} /> ~{' '}
-            <DatePicker onChange={(date, str) => setState({ ...state, endDt: str })} />
+            <YBDatePicker onChange={(date, str) => setState({ ...state, startDt: str })} /> ~{' '}
+            <YBDatePicker onChange={(date, str) => setState({ ...state, endDt: str })} />
           </Col>
         </Row>
       </div>
@@ -193,12 +205,12 @@ const SearchOptions = props => {
   );
 };
 
-const DataList = props => {
+const DataList = (props) => {
   return (
     <Table
       onRow={(record, rowIndex) => {
         return {
-          onClick: event => props.onClick(record, rowIndex), // click row
+          onClick: (event) => props.onClick(record, rowIndex), // click row
           //onDoubleClick: event => {}, // double click row
           //onContextMenu: event => {}, // right button click row
           //onMouseEnter: event => {}, // mouse enter row
@@ -217,7 +229,7 @@ const DataList = props => {
         {
           title: '프로그램구분',
           dataIndex: 'programGbn',
-          render: text => (text === 'M' ? '메인' : '서브'),
+          render: (text) => (text === 'M' ? '메인' : '서브'),
         },
         {
           title: '프로그램 NO',
@@ -251,16 +263,16 @@ export default () => {
   const style = { padding: '8px 0' };
   const [data, setData] = useState([]);
   const [detail, setDetail] = useState();
-  const doSearch = async state => {
+  const doSearch = async (state) => {
     const res = await axios.get(`${ELASTIC_URL}/program/list/${state.selTaskGbn1}`);
     setData(
       JSON.parse(res.data._source.programList).map((item, idx) => {
         item.key = idx;
         return item;
-      }),
+      })
     );
   };
-  const handleChange = e => {
+  const handleChange = (e) => {
     setDetail({ ...detail, [e.target.name]: e.target.value });
   };
   const doSave = () => {
@@ -300,7 +312,7 @@ export default () => {
   const dataRowOnClick = (record, rowIndex) => {
     setDetail({ spin: true });
     const res = axios.get(`${ELASTIC_URL}/demo/commonCode/${record.systemName}`);
-    res.then(res => {
+    res.then((res) => {
       setDetail({
         ...detail,
         //orgRecord : {...record},
@@ -313,7 +325,7 @@ export default () => {
   };
 
   useEffect(() => {
-    getSystemList().then(res => {
+    getSystemList().then((res) => {
       setDetail({
         ...detail,
         dtlSystemName: [...JSON.parse(res.data._source.systemList)],
@@ -396,7 +408,7 @@ export default () => {
                 style={{ width: 250 }}
                 datasource={detail?.dtlSystemName}
                 value={detail?.systemName}
-                onChange={val => setDetail({ ...detail, systemName: val })}
+                onChange={(val) => setDetail({ ...detail, systemName: val })}
               />
             </Col>
             <Col span={2}>업무구분</Col>
@@ -407,7 +419,7 @@ export default () => {
                 style={{ width: 250 }}
                 datasource={detail?.dtlTaskList}
                 value={detail?.dtlTaskVal}
-                onChange={val => setDetail({ ...detail, dtlTaskVal: val })}
+                onChange={(val) => setDetail({ ...detail, dtlTaskVal: val })}
               />
             </Col>
           </Row>

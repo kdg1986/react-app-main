@@ -2,6 +2,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const webpack = require('webpack');
 
 module.exports = (env, options) => {
@@ -50,6 +51,12 @@ module.exports = (env, options) => {
         DEVELOP_MODE: options.mode === 'development',
         'process.env': JSON.stringify(process.env),
       }),
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ko/),
+      new webpack.ContextReplacementPlugin(
+        /date\-fns[\/\\]/,
+        new RegExp(`[/\\\\\](${['en-US'].join('|')})[/\\\\\]index\.js$`)
+      ),
+      //new BundleAnalyzerPlugin(),
     ],
     resolve: {
       alias: {
