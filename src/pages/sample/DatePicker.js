@@ -2,6 +2,7 @@ import { Button, PageHeader, Divider } from 'antd';
 import Util from '@/pages/sample/SampleUtil';
 import { keygen } from '@/util';
 import YBDatePicker from '@/components/YBDatePicker';
+import { StringToDate, format } from '@/util/dateUtil';
 
 const { rowUtil, Typo } = Util;
 const Addrow = rowUtil();
@@ -25,14 +26,16 @@ export default () => {
           </Button>,
         ]}
       />
-      <Typo>{"import { DatePicker } from 'antd';"}</Typo>
+      <Typo>{"import YBDatePicker from '@/components/YBDatePicker';"}</Typo>
+      <p />
+      <Typo>{"import { StringToDate, format } from '@/util/dateUtil';"}</Typo>
       <p />
       <Addrow
         title="picker"
         divider={true}
         demo={
           <>
-            {/*<YBDatePicker defaultValue={moment('2021-10-20')} />*/}
+            <YBDatePicker defaultValue={new Date()} />
             <YBDatePicker picker="week" />
             <YBDatePicker picker="month" />
             <YBDatePicker picker="quarter" />
@@ -101,17 +104,89 @@ export default () => {
         }
       />
       <Addrow
+        title="defaultValue"
+        divider={true}
+        demo={
+          <>
+            <YBDatePicker defaultValue={StringToDate('2015-01-22')} format="yyyy-MM-dd" />
+          </>
+        }
+        description="-, &nbsp; 기본값 : Date"
+        code={
+          <>
+            <Typo>{`<YBDatePicker
+              defaultValue={StringToDate('2015-01-22')}
+              format="yyyy-MM-dd"
+            />`}</Typo>
+          </>
+        }
+      />
+      <Addrow
+        title="value"
+        divider={true}
+        demo={
+          <>
+            <YBDatePicker value={StringToDate('2015-01-22')} format="yyyy-MM-dd" />
+          </>
+        }
+        description="-, &nbsp; 기본값 : data-fns : parse"
+        code={
+          <>
+            <Typo>{`<YBDatePicker
+              value={StringToDate('2015-01-22')}
+              format="yyyy-MM-dd"
+            />`}</Typo>
+          </>
+        }
+      />
+      <Addrow
         title="disabledDate"
         divider={true}
         demo={
           <>
-            <YBDatePicker disabledDate={(current) => current.date() % 2 === 0} />
+            <YBDatePicker disabledDate={(current) => format(current, 'dd') % 2 === 0} />
           </>
         }
         description="function, &nbsp; 기본값 : -"
         code={
           <>
-            <Typo>{'<YBDatePicker disabledDate={current => current.date() % 2 === 0}  />'}</Typo>
+            <Typo>
+              {'<YBDatePicker disabledDate={(current) => format(current, "dd") % 2 === 0} />'}
+            </Typo>
+          </>
+        }
+      />
+      <Addrow
+        title="onChange"
+        divider={true}
+        demo={
+          <>
+            <YBDatePicker onChange={(date, datestr) => console.log(date, datestr)} />
+          </>
+        }
+        description="function, &nbsp; 기본값 : -"
+        code={
+          <>
+            <Typo>
+              {'<YBDatePicker onChange={(date, datestr) => console.log(date, datestr)} />'}
+            </Typo>
+          </>
+        }
+      />
+      <Addrow
+        title="onPanelChange"
+        divider={true}
+        demo={
+          <>
+            <YBDatePicker onPanelChange={(date, datestr) => console.log(date, datestr)} />
+          </>
+        }
+        description="function, &nbsp; 기본값 : -"
+        code={
+          <>
+            <Typo>
+              {'<YBDatePicker onPanelChange={(date, datestr) => console.log(date, datestr)} />'}
+            </Typo>
           </>
         }
       />
@@ -122,14 +197,15 @@ export default () => {
           <>
             <YBDatePicker
               dateRender={(current) => {
+                const _date = format(current, 'dd');
                 const style = {};
-                if (current.date() % 2 === 0) {
+                if (_date % 2 === 0) {
                   style.border = '1px solid #1890ff';
                   style.borderRadius = '50%';
                 }
                 return (
                   <div className="ant-picker-cell-inner" style={style}>
-                    {current.date()}
+                    {_date}
                   </div>
                 );
               }}
@@ -140,22 +216,48 @@ export default () => {
         code={
           <>
             <Typo codeStyle={false}>
-              <pre>{`<YBDatePicker dateRender={current => {
+              <pre>{`<YBDatePicker
+  dateRender={(current) => {
+    const _date = format(current, 'dd');
     const style = {};
-    if (current.date() % 2 === 0) {
-        style.border = '1px solid #1890ff';
-        style.borderRadius = '50%';
+    if (_date % 2 === 0) {
+      style.border = '1px solid #1890ff';
+      style.borderRadius = '50%';
     }
     return (
-        <div className="ant-picker-cell-inner" style={style}>
-            {current.date()}
-        </div>
+      <div className="ant-picker-cell-inner" style={style}>
+        {_date}
+      </div>
     );
-}}  />`}</pre>
+  }}
+/>`}</pre>
             </Typo>
           </>
         }
       />
+
+      <Addrow
+        title="format"
+        divider={true}
+        demo={
+          <>
+            <YBDatePicker format="yyyy" />
+            <YBDatePicker format="MM" />
+            <YBDatePicker format="dd" />
+            <YBDatePicker format="MM-dd" />
+          </>
+        }
+        description="String, &nbsp; 기본값 : yyyy-MM-dd"
+        code={
+          <>
+            <Typo>{'<YBDatePicker format="yyyy" />'}</Typo>
+            <Typo>{'<YBDatePicker format="MM" />'}</Typo>
+            <Typo>{'<YBDatePicker format="dd" />'}</Typo>
+            <Typo>{'<YBDatePicker format="MM-dd" />'}</Typo>
+          </>
+        }
+      />
+
       <Divider />
       <PageHeader
         className="site-page-header"
