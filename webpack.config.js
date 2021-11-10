@@ -57,6 +57,8 @@ module.exports = (env, options) => {
       }),
       new Dotenv({
         path: './.env',
+        //systemvars: true,
+        allowEmptyValues: true,
         //safe: true,
       }),
     ],
@@ -69,11 +71,13 @@ module.exports = (env, options) => {
         '@ELECTRON': path.resolve(__dirname, 'electron/'),
       },
       fallback: {
-        //"path": require.resolve("path-browserify"),
-        //"os": require.resolve("os-browserify/browser"),
-        //"http": require.resolve("stream-http"),
-        //"https": require.resolve("https-browserify"),
-        //"assert": require.resolve("assert/"),
+        //crypto: require.resolve('crypto-browserify'),
+        //stream: require.resolve('stream-browserify'),
+        //path: require.resolve('path-browserify'),
+        //os: require.resolve('os-browserify/browser'),
+        //http: require.resolve('stream-http'),
+        //https: require.resolve('https-browserify'),
+        //assert: require.resolve('assert/'),
       },
     },
     devServer: {
