@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const Dotenv = require('dotenv-webpack');
 const webpack = require('webpack');
 
 module.exports = (env, options) => {
@@ -49,14 +50,15 @@ module.exports = (env, options) => {
       new webpack.DefinePlugin({
         ELASTIC_URL: JSON.stringify('http://kdg1986.synology.me:9200'),
         DEVELOP_MODE: options.mode === 'development',
-        'process.env': JSON.stringify(process.env),
       }),
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /ko/),
-      new webpack.ContextReplacementPlugin(
-        /date\-fns[\/\\]/,
-        new RegExp(`[/\\\\\](${['en-US'].join('|')})[/\\\\\]index\.js$`)
-      ),
-      //new BundleAnalyzerPlugin(),
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^\.\/locale$/,
+        contextRegExp: /moment$/,
+      }),
+      new Dotenv({
+        path: './.env',
+        //safe: true,
+      }),
     ],
     resolve: {
       alias: {
