@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { Modal as _Modal } from 'antd';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 
 export const Modal = (props) => <_Modal {...props}>{props.children}</_Modal>;
@@ -35,6 +35,7 @@ export const Confirm = (props) => {
 };
 
 export const DragModal = (props) => {
+  const contRef = useRef();
   const [state, setState] = useState({
     disabled: true,
     bounds: { left: 0, top: 0, bottom: 0, right: 0 },
@@ -54,6 +55,15 @@ export const DragModal = (props) => {
       },
     });
   };
+
+  useEffect(() => {
+    if (contRef?.current) {
+      contRef.current.setAttribute('src', 'http://localhost:3000');
+    }
+    return () => {
+      console.log('destroy');
+    };
+  });
 
   return (
     <>
@@ -90,7 +100,8 @@ export const DragModal = (props) => {
           </Draggable>
         )}
       >
-        {props.children}
+        {/*props.children*/}
+        <iframe ref={contRef}></iframe>
       </_Modal>
     </>
   );

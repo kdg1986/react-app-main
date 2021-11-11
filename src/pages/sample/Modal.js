@@ -388,14 +388,16 @@ export default () => {
         demo={
           <>
             <Button onClick={() => setVisDragModal(true)}>Draggable Modal</Button>
-            <DragModal
-              title="Draggable"
-              visible={isVisDragModal}
-              onOk={() => setVisDragModal(false)}
-              onCancel={() => setVisDragModal(false)}
-            >
-              Draggable Content
-            </DragModal>
+            {isVisDragModal && (
+              <DragModal
+                title="Draggable"
+                visible={isVisDragModal}
+                onOk={() => setVisDragModal(false)}
+                onCancel={() => setVisDragModal(false)}
+              >
+                Draggable Content
+              </DragModal>
+            )}
           </>
         }
         code={

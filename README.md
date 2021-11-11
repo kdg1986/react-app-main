@@ -9,15 +9,16 @@
 ## Tools
 
 ```
-    Windows 10 => node 14버전 이상 사용을 위해 최소 윈도우 10 & 리눅스 계열 이상 사용  
+    Windows 10 => node 14버전 이상 사용을 위해 최소 윈도우 10 & 리눅스 계열 이상 사용
     NodeJs 14.x.x => nvm 추가설치하여 버전 관리 추천
-    Git => 형상관리 및 git bash 터미널 사용하기 위함 윈도우 powershell 기능이 다소 떨어짐 
+    Git => 형상관리 및 git bash 터미널 사용하기 위함 윈도우 powershell 기능이 다소 떨어짐
     VsCode
     Yarn => npm 대체 패키지 매니저 npm을 통해 설치
 ```
+
 ## Setting
 
-* VsCode 터미널 설정
+- VsCode 터미널 설정
 
 ```
     ctrl + ,
@@ -26,17 +27,17 @@
     터미널 단축키 ctrl + `
 ```
 
-* Prettier 
+- Prettier
 
 ```
-    ctrl + shift + x 
+    ctrl + shift + x
     Prettier - Code formatter 검색 설치
     ctrl + ,
     Format on Save 검색
     Editor: Format On Save 체크
-    
-```
+    Format javascript 검색 체크해제
 
+```
 
 ## Installation
 
@@ -46,42 +47,33 @@
 
 ```
 
-
 ## Start
 
-* web
+- web
 
 ```
     $ yarn start
     http://localhost:3000
 ```
 
-* electron
+- electron
 
 ```
     $ yarn start-ele
 ```
 
-
 ## Build
 
-* web 
+- web
 
 ```
-    $ yarn build 
+    $ yarn build
     ./build
 ```
 
-* electron
+- electron
 
 ```
     $ yarn build-ele
     ./dist
 ```
-
-   
-    
-
-
-
-
