@@ -22,7 +22,7 @@ module.exports = (env, options) => {
           uglifyOptions: {
             warnings: false,
           },
-          chunkFilter: chunk => {
+          chunkFilter: (chunk) => {
             if (chunk.name === 'vendor') {
               return false;
             }

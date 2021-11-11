@@ -19,7 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
 import { parse } from 'date-fns';
-import YBDatePicker from '@/components/YBDatePicker';
+import YBDatePicker from '@/components/YBDatePicker.tsx';
 
 /*
 axios.put(`${ELASTIC_URL}/demo/commonCode/ERP`,{

@@ -1,7 +1,7 @@
 import { Button, PageHeader, Divider } from 'antd';
 import Util from '@/pages/sample/SampleUtil';
 import { keygen } from '@/util';
-import YBDatePicker from '@/components/YBDatePicker';
+import YBDatePicker from '@/components/YBDatePicker.tsx';
 import { StringToDate, format } from '@/util/dateUtil';
 
 const { rowUtil, Typo } = Util;
